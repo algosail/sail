@@ -1,0 +1,43 @@
+{
+  "name": "@algosail/sail",
+  "version": "0.1.0",
+  "description": "Small FP library for vanilla JS projects.",
+  "author": "algosail",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./array": "./lib/array.js",
+    "./boolean": "./lib/boolean.js",
+    "./date": "./lib/date.js",
+    "./either": "./lib/either.js",
+    "./fn": "./lib/fn.js",
+    "./logic": "./lib/logic.js",
+    "./maybe": "./lib/maybe.js",
+    "./nil": "./lib/nil.js",
+    "./number": "./lib/number.js",
+    "./pair": "./lib/pair.js",
+    "./regexp": "./lib/regexp.js",
+    "./string": "./lib/string.js",
+    "./strmap": "./lib/strmap.js"
+  },
+  "files": [
+    "lib/*.js"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "docs": "node scripts/build-docs.js"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^4.0.0",
+    "eslint": "^9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/algosail/sail.git"
+  },
+  "bugs": {
+    "url": "https://github.com/algosail/sail/issues"
+  },
+  "homepage": "https://github.com/algosail/sail#readme"
+}
