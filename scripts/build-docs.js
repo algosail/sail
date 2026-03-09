@@ -179,7 +179,9 @@ out.push ('')
 
 // Each module section
 for (const mod of modules) {
-  out.push (`## \`${mod.name}\``)
+  // Module heading with back-link to modules TOC
+  // GitHub auto-generates anchor from heading text: ## `maybe` → #maybe
+  out.push (`## [\`${mod.name}\`](#modules)`)
   out.push ('')
 
   // Per-module function table
@@ -197,7 +199,8 @@ for (const mod of modules) {
     const anchor = `${mod.name}-${e.name.toLowerCase ()}`
     out.push (`<a id="${anchor}"></a>`)
     out.push ('')
-    out.push (`### \`${e.name}\``)
+    // Function heading with back-link to this module's section
+    out.push (`### \`${e.name}\` — [↑ \`${mod.name}\`](#${mod.name})`)
     out.push ('')
     if (e.signature) {
       out.push ('```')
