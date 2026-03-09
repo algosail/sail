@@ -1595,6 +1595,7 @@ traverse (Array.of) (f => xs => xs.map (f)) (x => [x, x]) (right (1)) // => [rig
 | [<code>pipe</code>](#fn-pipe) | `pipe :: Foldable f => f (Any -> Any) -> a -> b` |
 | [<code>pipeK</code>](#fn-pipek) | `pipeK :: (Foldable f, Flatmap m) => f (Any -> m Any) -> m a -> m b` |
 | [<code>T</code>](#fn-t) | `T :: a -> (a -> b) -> b` |
+| [<code>tap</code>](#fn-tap) | `tap :: (a -> *) -> a -> a` |
 | [<code>on</code>](#fn-on) | `on :: (b -> b -> c) -> (a -> b) -> a -> a -> c` |
 | [<code>id</code>](#fn-id) | `id :: a -> a` |
 | [<code>compose</code>](#fn-compose) | `compose :: (b -> c) -> (a -> b) -> a -> c` |
@@ -1653,6 +1654,22 @@ Thrush combinator – applies an argument to a function.
 
 ```js
 T (42) (x => x + 1) // => 43
+```
+
+---
+
+<a id="fn-tap"></a>
+
+### `tap` — [↑ `fn`](#fn)
+
+```
+tap :: (a -> *) -> a -> a
+```
+
+Runs the given function with the supplied object, then returns the object.
+
+```js
+tap (console.log) (42) // => 42 *log: 42
 ```
 
 ---
@@ -1877,6 +1894,7 @@ handleThrow (JSON.parse) (r => r) (e => null) ('{}')
 | [<code>ifElse</code>](#logic-ifelse) | `ifElse :: (a -> Boolean) -> (a -> b) -> (a -> b) -> a -> b` |
 | [<code>when</code>](#logic-when) | `when :: (a -> Boolean) -> (a -> a) -> a -> a` |
 | [<code>unless</code>](#logic-unless) | `unless :: (a -> Boolean) -> (a -> a) -> a -> a` |
+| [<code>cond</code>](#logic-cond) | `cond :: [(a -> Boolean, a -> b)] -> a -> Maybe b` |
 
 <a id="logic-and"></a>
 
@@ -2002,6 +2020,22 @@ Applies f only when predicate does NOT hold.
 
 ```js
 unless (x => x > 0) (x => -x) (-3) // => 3
+```
+
+---
+
+<a id="logic-cond"></a>
+
+### `cond` — [↑ `logic`](#logic)
+
+```
+cond :: [(a -> Boolean, a -> b)] -> a -> Maybe b
+```
+
+Tries each [pred, fn] pair in order; returns Just(fn(a)) for the first matching predicate, or Nothing if none match.
+
+```js
+cond ([pair (a => a <= 0) ((a) => a + 2), pair (a => a > 0) (Math.abs)]) (-1) // Just 1
 ```
 
 ---
@@ -2936,6 +2970,7 @@ parseInt_ (16) ('ff') // => just(255)
 | [<code>bimap</code>](#pair-bimap) | `bimap :: (a -> c) -> (b -> d) -> [a, b] -> [c, d]` |
 | [<code>fold</code>](#pair-fold) | `fold :: ((c, a, b) -> c) -> c -> [a, b] -> c` |
 | [<code>foldWith</code>](#pair-foldwith) | `foldWith :: (a -> b -> c) -> [a, b] -> c` |
+| [<code>cond</code>](#pair-cond) | `cond :: Pair (a => boolean, a => b)[] -> a -> Maybe b` |
 | [<code>traverse</code>](#pair-traverse) | `traverse :: (b -> f b) -> (f (a->b) -> f a -> f b) -> ((a->b) -> f a -> f b) -> (a -> f b) -> [a, c] -> f [b, c]` |
 
 <a id="pair-pair"></a>
@@ -3126,6 +3161,22 @@ Applies a curried binary function to the pair's elements.
 
 ```js
 foldWith (a => b => a + b) ([1, 2]) // => 3
+```
+
+---
+
+<a id="pair-cond"></a>
+
+### `cond` — [↑ `pair`](#pair)
+
+```
+cond :: Pair (a => boolean, a => b)[] -> a -> Maybe b
+```
+
+Tries each Pair (pred, fn) in order; returns Just(fn(a)) for the first matching predicate, or Nothing if none match.
+
+```js
+cond ([pair (a => a <= 0) ((a) => a + 2), pair (a => a > 0) (Math.abs)]) (-1) // Just 1
 ```
 
 ---

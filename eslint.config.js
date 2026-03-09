@@ -13,13 +13,7 @@ export default [
       //   function foo (x) {}   const f = function (x) {}
       '@stylistic/space-before-function-paren': ['error', 'always'],
 
-      // Space between function name and ( at call sites — off because the rule
-      // cannot allow both  foo (x)  and the indented-newline form:
-      //   foo
-      //     (x)
-      // Style is enforced by convention; single-line spacing is still caught
-      // by the editor formatter.
-      '@stylistic/func-call-spacing': 'off',
+      '@stylistic/func-call-spacing': ['error', 'always', { allowNewlines: true }],
 
       // ── Indentation ──────────────────────────────────────────────────────
       '@stylistic/indent': ['error', 2, {
