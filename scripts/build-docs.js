@@ -188,14 +188,16 @@ for (const mod of modules) {
   for (const e of mod.entries) {
     const sig = e.signature ? e.signature.replace (/\|/g, '\\|') : ''
     const anchor = `${mod.name}-${e.name.toLowerCase ()}`
-    out.push (`| [\`${e.name}\`](#${anchor}) | \`${sig}\` |`)
+    out.push (`| [<code>${e.name}</code>](#${anchor}) | \`${sig}\` |`)
   }
   out.push ('')
 
   // Each function entry
   for (const e of mod.entries) {
     const anchor = `${mod.name}-${e.name.toLowerCase ()}`
-    out.push (`### \`${e.name}\` {#${anchor}}`)
+    out.push (`<a id="${anchor}"></a>`)
+    out.push ('')
+    out.push (`### \`${e.name}\``)
     out.push ('')
     if (e.signature) {
       out.push ('```')

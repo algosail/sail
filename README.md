@@ -24,56 +24,58 @@ Small FP library for vanilla JS projects.
 
 | Function | Signature |
 |---|---|
-| [`of`](#array-of) | `of :: a -> Array a` |
-| [`empty`](#array-empty) | `empty :: () -> Array a` |
-| [`range`](#array-range) | `range :: Integer -> Integer -> Array Integer` |
-| [`unfold`](#array-unfold) | `unfold :: (b -> Maybe [a, b]) -> b -> Array a` |
-| [`chainRec`](#array-chainrec) | `chainRec :: ((a -> Step, b -> Step, a) -> Array Step) -> a -> Array b` |
-| [`isOutOfBounds`](#array-isoutofbounds) | `isOutOfBounds :: Number -> Array a -> Boolean` |
-| [`lookup`](#array-lookup) | `lookup :: Number -> Array a -> Maybe a` |
-| [`size`](#array-size) | `size :: Array a -> Integer` |
-| [`array`](#array-array) | `array :: b -> (a -> Array a -> b) -> Array a -> b` |
-| [`head`](#array-head) | `head :: Array a -> Maybe a` |
-| [`last`](#array-last) | `last :: Array a -> Maybe a` |
-| [`tail`](#array-tail) | `tail :: Array a -> Maybe (Array a)` |
-| [`init`](#array-init) | `init :: Array a -> Maybe (Array a)` |
-| [`all`](#array-all) | `all :: (a -> Boolean) -> Array a -> Boolean` |
-| [`any`](#array-any) | `any :: (a -> Boolean) -> Array a -> Boolean` |
-| [`none`](#array-none) | `none :: (a -> Boolean) -> Array a -> Boolean` |
-| [`elem`](#array-elem) | `elem :: ((a, a) -> Boolean) -> a -> Array a -> Boolean` |
-| [`equals`](#array-equals) | `equals :: ((a, a) -> Boolean) -> Array a -> Array a -> Boolean` |
-| [`lte`](#array-lte) | `lte :: ((a, a) -> Boolean) -> Array a -> Array a -> Boolean` |
-| [`find`](#array-find) | `find :: (a -> Boolean) -> Array a -> Maybe a` |
-| [`findMap`](#array-findmap) | `findMap :: (a -> Maybe b) -> Array a -> Maybe b` |
-| [`joinWith`](#array-joinwith) | `joinWith :: String -> Array String -> String` |
-| [`reduce`](#array-reduce) | `reduce :: ((b, a) -> b) -> b -> Array a -> b` |
-| [`reduceC`](#array-reducec) | `reduceC :: (b -> a -> b) -> b -> Array a -> b` |
-| [`foldMap`](#array-foldmap) | `foldMap :: ((b, b) -> b) -> b -> (a -> b) -> Array a -> b` |
-| [`concat`](#array-concat) | `concat :: Array a -> Array a -> Array a` |
-| [`append`](#array-append) | `append :: a -> Array a -> Array a` |
-| [`prepend`](#array-prepend) | `prepend :: a -> Array a -> Array a` |
-| [`map`](#array-map) | `map :: (a -> b) -> Array a -> Array b` |
-| [`filter`](#array-filter) | `` |
-| [`reject`](#array-reject) | `reject :: (a -> Boolean) -> Array a -> Array a` |
-| [`flatmap`](#array-flatmap) | `` |
-| [`ap`](#array-ap) | `ap :: Array (a -> b) -> Array a -> Array b` |
-| [`reverse`](#array-reverse) | `reverse :: Array a -> Array a` |
-| [`sort`](#array-sort) | `sort :: ((a, a) -> Boolean) -> Array a -> Array a` |
-| [`sortBy`](#array-sortby) | `sortBy :: ((b, b) -> Boolean) -> (a -> b) -> Array a -> Array a` |
-| [`extend`](#array-extend) | `extend :: (Array a -> b) -> Array a -> Array b` |
-| [`take`](#array-take) | `take :: Integer -> Array a -> Maybe (Array a)` |
-| [`drop`](#array-drop) | `drop :: Integer -> Array a -> Maybe (Array a)` |
-| [`takeLast`](#array-takelast) | `takeLast :: Integer -> Array a -> Maybe (Array a)` |
-| [`dropLast`](#array-droplast) | `dropLast :: Integer -> Array a -> Maybe (Array a)` |
-| [`takeWhile`](#array-takewhile) | `takeWhile :: (a -> Boolean) -> Array a -> Array a` |
-| [`dropWhile`](#array-dropwhile) | `dropWhile :: (a -> Boolean) -> Array a -> Array a` |
-| [`intercalate`](#array-intercalate) | `intercalate :: Array a -> Array (Array a) -> Array a` |
-| [`groupBy`](#array-groupby) | `groupBy :: (a -> a -> Boolean) -> Array a -> Array (Array a)` |
-| [`zip`](#array-zip) | `zip :: Array a -> Array b -> Array [a, b]` |
-| [`zipWith`](#array-zipwith) | `zipWith :: (a -> b -> c) -> Array a -> Array b -> Array c` |
-| [`traverse`](#array-traverse) | `traverse :: (b -> f b) -> (f (a->b) -> f a -> f b) -> ((a->b) -> f a -> f b) -> (a -> f b) -> Array a -> f (Array b)` |
+| [<code>of</code>](#array-of) | `of :: a -> Array a` |
+| [<code>empty</code>](#array-empty) | `empty :: () -> Array a` |
+| [<code>range</code>](#array-range) | `range :: Integer -> Integer -> Array Integer` |
+| [<code>unfold</code>](#array-unfold) | `unfold :: (b -> Maybe [a, b]) -> b -> Array a` |
+| [<code>chainRec</code>](#array-chainrec) | `chainRec :: ((a -> Step, b -> Step, a) -> Array Step) -> a -> Array b` |
+| [<code>isOutOfBounds</code>](#array-isoutofbounds) | `isOutOfBounds :: Number -> Array a -> Boolean` |
+| [<code>lookup</code>](#array-lookup) | `lookup :: Number -> Array a -> Maybe a` |
+| [<code>size</code>](#array-size) | `size :: Array a -> Integer` |
+| [<code>array</code>](#array-array) | `array :: b -> (a -> Array a -> b) -> Array a -> b` |
+| [<code>head</code>](#array-head) | `head :: Array a -> Maybe a` |
+| [<code>last</code>](#array-last) | `last :: Array a -> Maybe a` |
+| [<code>tail</code>](#array-tail) | `tail :: Array a -> Maybe (Array a)` |
+| [<code>init</code>](#array-init) | `init :: Array a -> Maybe (Array a)` |
+| [<code>all</code>](#array-all) | `all :: (a -> Boolean) -> Array a -> Boolean` |
+| [<code>any</code>](#array-any) | `any :: (a -> Boolean) -> Array a -> Boolean` |
+| [<code>none</code>](#array-none) | `none :: (a -> Boolean) -> Array a -> Boolean` |
+| [<code>elem</code>](#array-elem) | `elem :: ((a, a) -> Boolean) -> a -> Array a -> Boolean` |
+| [<code>equals</code>](#array-equals) | `equals :: ((a, a) -> Boolean) -> Array a -> Array a -> Boolean` |
+| [<code>lte</code>](#array-lte) | `lte :: ((a, a) -> Boolean) -> Array a -> Array a -> Boolean` |
+| [<code>find</code>](#array-find) | `find :: (a -> Boolean) -> Array a -> Maybe a` |
+| [<code>findMap</code>](#array-findmap) | `findMap :: (a -> Maybe b) -> Array a -> Maybe b` |
+| [<code>joinWith</code>](#array-joinwith) | `joinWith :: String -> Array String -> String` |
+| [<code>reduce</code>](#array-reduce) | `reduce :: ((b, a) -> b) -> b -> Array a -> b` |
+| [<code>reduceC</code>](#array-reducec) | `reduceC :: (b -> a -> b) -> b -> Array a -> b` |
+| [<code>foldMap</code>](#array-foldmap) | `foldMap :: ((b, b) -> b) -> b -> (a -> b) -> Array a -> b` |
+| [<code>concat</code>](#array-concat) | `concat :: Array a -> Array a -> Array a` |
+| [<code>append</code>](#array-append) | `append :: a -> Array a -> Array a` |
+| [<code>prepend</code>](#array-prepend) | `prepend :: a -> Array a -> Array a` |
+| [<code>map</code>](#array-map) | `map :: (a -> b) -> Array a -> Array b` |
+| [<code>filter</code>](#array-filter) | `` |
+| [<code>reject</code>](#array-reject) | `reject :: (a -> Boolean) -> Array a -> Array a` |
+| [<code>flatmap</code>](#array-flatmap) | `` |
+| [<code>ap</code>](#array-ap) | `ap :: Array (a -> b) -> Array a -> Array b` |
+| [<code>reverse</code>](#array-reverse) | `reverse :: Array a -> Array a` |
+| [<code>sort</code>](#array-sort) | `sort :: ((a, a) -> Boolean) -> Array a -> Array a` |
+| [<code>sortBy</code>](#array-sortby) | `sortBy :: ((b, b) -> Boolean) -> (a -> b) -> Array a -> Array a` |
+| [<code>extend</code>](#array-extend) | `extend :: (Array a -> b) -> Array a -> Array b` |
+| [<code>take</code>](#array-take) | `take :: Integer -> Array a -> Maybe (Array a)` |
+| [<code>drop</code>](#array-drop) | `drop :: Integer -> Array a -> Maybe (Array a)` |
+| [<code>takeLast</code>](#array-takelast) | `takeLast :: Integer -> Array a -> Maybe (Array a)` |
+| [<code>dropLast</code>](#array-droplast) | `dropLast :: Integer -> Array a -> Maybe (Array a)` |
+| [<code>takeWhile</code>](#array-takewhile) | `takeWhile :: (a -> Boolean) -> Array a -> Array a` |
+| [<code>dropWhile</code>](#array-dropwhile) | `dropWhile :: (a -> Boolean) -> Array a -> Array a` |
+| [<code>intercalate</code>](#array-intercalate) | `intercalate :: Array a -> Array (Array a) -> Array a` |
+| [<code>groupBy</code>](#array-groupby) | `groupBy :: (a -> a -> Boolean) -> Array a -> Array (Array a)` |
+| [<code>zip</code>](#array-zip) | `zip :: Array a -> Array b -> Array [a, b]` |
+| [<code>zipWith</code>](#array-zipwith) | `zipWith :: (a -> b -> c) -> Array a -> Array b -> Array c` |
+| [<code>traverse</code>](#array-traverse) | `traverse :: (b -> f b) -> (f (a->b) -> f a -> f b) -> ((a->b) -> f a -> f b) -> (a -> f b) -> Array a -> f (Array b)` |
 
-### `of` {#array-of}
+<a id="array-of"></a>
+
+### `of`
 
 ```
 of :: a -> Array a
@@ -87,7 +89,9 @@ of (1) // => [1]
 
 ---
 
-### `empty` {#array-empty}
+<a id="array-empty"></a>
+
+### `empty`
 
 ```
 empty :: () -> Array a
@@ -101,7 +105,9 @@ empty () // => []
 
 ---
 
-### `range` {#array-range}
+<a id="array-range"></a>
+
+### `range`
 
 ```
 range :: Integer -> Integer -> Array Integer
@@ -115,7 +121,9 @@ range (1) (4) // => [1, 2, 3]
 
 ---
 
-### `unfold` {#array-unfold}
+<a id="array-unfold"></a>
+
+### `unfold`
 
 ```
 unfold :: (b -> Maybe [a, b]) -> b -> Array a
@@ -129,7 +137,9 @@ unfold (n => n > 3 ? M.nothing () : M.just ([n, n+1])) (1) // => [1, 2, 3]
 
 ---
 
-### `chainRec` {#array-chainrec}
+<a id="array-chainrec"></a>
+
+### `chainRec`
 
 ```
 chainRec :: ((a -> Step, b -> Step, a) -> Array Step) -> a -> Array b
@@ -143,7 +153,9 @@ chainRec ((n, d, x) => x > 2 ? [d (x)] : [n (x + 1), n (x + 2)]) (0)
 
 ---
 
-### `isOutOfBounds` {#array-isoutofbounds}
+<a id="array-isoutofbounds"></a>
+
+### `isOutOfBounds`
 
 ```
 isOutOfBounds :: Number -> Array a -> Boolean
@@ -157,7 +169,9 @@ isOutOfBounds (3) ([1, 2, 3]) // => true
 
 ---
 
-### `lookup` {#array-lookup}
+<a id="array-lookup"></a>
+
+### `lookup`
 
 ```
 lookup :: Number -> Array a -> Maybe a
@@ -171,7 +185,9 @@ lookup (0) ([10, 20]) // => just(10)
 
 ---
 
-### `size` {#array-size}
+<a id="array-size"></a>
+
+### `size`
 
 ```
 size :: Array a -> Integer
@@ -185,7 +201,9 @@ size ([1, 2, 3]) // => 3
 
 ---
 
-### `array` {#array-array}
+<a id="array-array"></a>
+
+### `array`
 
 ```
 array :: b -> (a -> Array a -> b) -> Array a -> b
@@ -199,7 +217,9 @@ array (0) (h => _ => h) ([5, 6]) // => 5
 
 ---
 
-### `head` {#array-head}
+<a id="array-head"></a>
+
+### `head`
 
 ```
 head :: Array a -> Maybe a
@@ -213,7 +233,9 @@ head ([1, 2, 3]) // => just(1)
 
 ---
 
-### `last` {#array-last}
+<a id="array-last"></a>
+
+### `last`
 
 ```
 last :: Array a -> Maybe a
@@ -227,7 +249,9 @@ last ([1, 2, 3]) // => just(3)
 
 ---
 
-### `tail` {#array-tail}
+<a id="array-tail"></a>
+
+### `tail`
 
 ```
 tail :: Array a -> Maybe (Array a)
@@ -241,7 +265,9 @@ tail ([1, 2, 3]) // => just([2,3])
 
 ---
 
-### `init` {#array-init}
+<a id="array-init"></a>
+
+### `init`
 
 ```
 init :: Array a -> Maybe (Array a)
@@ -255,7 +281,9 @@ init ([1, 2, 3]) // => just([1,2])
 
 ---
 
-### `all` {#array-all}
+<a id="array-all"></a>
+
+### `all`
 
 ```
 all :: (a -> Boolean) -> Array a -> Boolean
@@ -269,7 +297,9 @@ all (x => x > 0) ([1, 2, 3]) // => true
 
 ---
 
-### `any` {#array-any}
+<a id="array-any"></a>
+
+### `any`
 
 ```
 any :: (a -> Boolean) -> Array a -> Boolean
@@ -283,7 +313,9 @@ any (x => x > 2) ([1, 2, 3]) // => true
 
 ---
 
-### `none` {#array-none}
+<a id="array-none"></a>
+
+### `none`
 
 ```
 none :: (a -> Boolean) -> Array a -> Boolean
@@ -297,7 +329,9 @@ none (x => x > 5) ([1, 2, 3]) // => true
 
 ---
 
-### `elem` {#array-elem}
+<a id="array-elem"></a>
+
+### `elem`
 
 ```
 elem :: ((a, a) -> Boolean) -> a -> Array a -> Boolean
@@ -311,7 +345,9 @@ elem ((a, b) => a === b) (2) ([1, 2, 3]) // => true
 
 ---
 
-### `equals` {#array-equals}
+<a id="array-equals"></a>
+
+### `equals`
 
 ```
 equals :: ((a, a) -> Boolean) -> Array a -> Array a -> Boolean
@@ -325,7 +361,9 @@ equals ((a, b) => a === b) ([1, 2]) ([1, 2]) // => true
 
 ---
 
-### `lte` {#array-lte}
+<a id="array-lte"></a>
+
+### `lte`
 
 ```
 lte :: ((a, a) -> Boolean) -> Array a -> Array a -> Boolean
@@ -339,7 +377,9 @@ lte ((a, b) => a <= b) ([1, 2]) ([1, 3]) // => true
 
 ---
 
-### `find` {#array-find}
+<a id="array-find"></a>
+
+### `find`
 
 ```
 find :: (a -> Boolean) -> Array a -> Maybe a
@@ -353,7 +393,9 @@ find (x => x > 2) ([1, 2, 3, 4]) // => just(3)
 
 ---
 
-### `findMap` {#array-findmap}
+<a id="array-findmap"></a>
+
+### `findMap`
 
 ```
 findMap :: (a -> Maybe b) -> Array a -> Maybe b
@@ -367,7 +409,9 @@ findMap (x => x > 2 ? just (x * 10) : nothing ()) ([1, 2, 3]) // => just(30)
 
 ---
 
-### `joinWith` {#array-joinwith}
+<a id="array-joinwith"></a>
+
+### `joinWith`
 
 ```
 joinWith :: String -> Array String -> String
@@ -381,7 +425,9 @@ joinWith (',') (['a', 'b', 'c']) // => 'a,b,c'
 
 ---
 
-### `reduce` {#array-reduce}
+<a id="array-reduce"></a>
+
+### `reduce`
 
 ```
 reduce :: ((b, a) -> b) -> b -> Array a -> b
@@ -395,7 +441,9 @@ reduce ((acc, x) => acc + x) (0) ([1, 2, 3]) // => 6
 
 ---
 
-### `reduceC` {#array-reducec}
+<a id="array-reducec"></a>
+
+### `reduceC`
 
 ```
 reduceC :: (b -> a -> b) -> b -> Array a -> b
@@ -409,7 +457,9 @@ reduceC (acc => x => acc + x) (0) ([1, 2, 3]) // => 6
 
 ---
 
-### `foldMap` {#array-foldmap}
+<a id="array-foldmap"></a>
+
+### `foldMap`
 
 ```
 foldMap :: ((b, b) -> b) -> b -> (a -> b) -> Array a -> b
@@ -423,7 +473,9 @@ foldMap ((a, b) => a + b) (0) (x => x * 2) ([1, 2, 3]) // => 12
 
 ---
 
-### `concat` {#array-concat}
+<a id="array-concat"></a>
+
+### `concat`
 
 ```
 concat :: Array a -> Array a -> Array a
@@ -437,7 +489,9 @@ concat ([1, 2]) ([3, 4]) // => [1,2,3,4]
 
 ---
 
-### `append` {#array-append}
+<a id="array-append"></a>
+
+### `append`
 
 ```
 append :: a -> Array a -> Array a
@@ -451,7 +505,9 @@ append (4) ([1, 2, 3]) // => [1,2,3,4]
 
 ---
 
-### `prepend` {#array-prepend}
+<a id="array-prepend"></a>
+
+### `prepend`
 
 ```
 prepend :: a -> Array a -> Array a
@@ -465,7 +521,9 @@ prepend (0) ([1, 2, 3]) // => [0,1,2,3]
 
 ---
 
-### `map` {#array-map}
+<a id="array-map"></a>
+
+### `map`
 
 ```
 map :: (a -> b) -> Array a -> Array b
@@ -479,13 +537,17 @@ map (x => x * 2) ([1, 2, 3]) // => [2,4,6]
 
 ---
 
-### `filter` {#array-filter}
+<a id="array-filter"></a>
+
+### `filter`
 
 Keeps elements satisfying the predicate. // filter :: (a -> Boolean) -> Array a -> Array a
 
 ---
 
-### `reject` {#array-reject}
+<a id="array-reject"></a>
+
+### `reject`
 
 ```
 reject :: (a -> Boolean) -> Array a -> Array a
@@ -499,13 +561,17 @@ reject (x => x > 1) ([1, 2, 3]) // => [1]
 
 ---
 
-### `flatmap` {#array-flatmap}
+<a id="array-flatmap"></a>
+
+### `flatmap`
 
 Maps then flattens one level (monadic bind). // flatmap :: (a -> Array b) -> Array a -> Array b
 
 ---
 
-### `ap` {#array-ap}
+<a id="array-ap"></a>
+
+### `ap`
 
 ```
 ap :: Array (a -> b) -> Array a -> Array b
@@ -519,7 +585,9 @@ ap ([x => x + 1, x => x * 2]) ([10, 20]) // => [11,21,20,40]
 
 ---
 
-### `reverse` {#array-reverse}
+<a id="array-reverse"></a>
+
+### `reverse`
 
 ```
 reverse :: Array a -> Array a
@@ -533,7 +601,9 @@ reverse ([1, 2, 3]) // => [3,2,1]
 
 ---
 
-### `sort` {#array-sort}
+<a id="array-sort"></a>
+
+### `sort`
 
 ```
 sort :: ((a, a) -> Boolean) -> Array a -> Array a
@@ -547,7 +617,9 @@ sort ((a, b) => a <= b) ([3, 1, 2]) // => [1,2,3]
 
 ---
 
-### `sortBy` {#array-sortby}
+<a id="array-sortby"></a>
+
+### `sortBy`
 
 ```
 sortBy :: ((b, b) -> Boolean) -> (a -> b) -> Array a -> Array a
@@ -561,7 +633,9 @@ sortBy ((a, b) => a <= b) (x => x.n) ([{n: 2}, {n:1}]) // => [{n:1},{n:2}]
 
 ---
 
-### `extend` {#array-extend}
+<a id="array-extend"></a>
+
+### `extend`
 
 ```
 extend :: (Array a -> b) -> Array a -> Array b
@@ -575,7 +649,9 @@ extend (head) ([1, 2, 3]) // => [just(1), just(2), just(3)]
 
 ---
 
-### `take` {#array-take}
+<a id="array-take"></a>
+
+### `take`
 
 ```
 take :: Integer -> Array a -> Maybe (Array a)
@@ -589,7 +665,9 @@ take (2) ([1, 2, 3]) // => just([1,2])
 
 ---
 
-### `drop` {#array-drop}
+<a id="array-drop"></a>
+
+### `drop`
 
 ```
 drop :: Integer -> Array a -> Maybe (Array a)
@@ -603,7 +681,9 @@ drop (1) ([1, 2, 3]) // => just([2,3])
 
 ---
 
-### `takeLast` {#array-takelast}
+<a id="array-takelast"></a>
+
+### `takeLast`
 
 ```
 takeLast :: Integer -> Array a -> Maybe (Array a)
@@ -617,7 +697,9 @@ takeLast (2) ([1, 2, 3]) // => just([2,3])
 
 ---
 
-### `dropLast` {#array-droplast}
+<a id="array-droplast"></a>
+
+### `dropLast`
 
 ```
 dropLast :: Integer -> Array a -> Maybe (Array a)
@@ -631,7 +713,9 @@ dropLast (1) ([1, 2, 3]) // => just([1,2])
 
 ---
 
-### `takeWhile` {#array-takewhile}
+<a id="array-takewhile"></a>
+
+### `takeWhile`
 
 ```
 takeWhile :: (a -> Boolean) -> Array a -> Array a
@@ -645,7 +729,9 @@ takeWhile (x => x < 3) ([1, 2, 3, 4]) // => [1,2]
 
 ---
 
-### `dropWhile` {#array-dropwhile}
+<a id="array-dropwhile"></a>
+
+### `dropWhile`
 
 ```
 dropWhile :: (a -> Boolean) -> Array a -> Array a
@@ -659,7 +745,9 @@ dropWhile (x => x < 3) ([1, 2, 3, 4]) // => [3,4]
 
 ---
 
-### `intercalate` {#array-intercalate}
+<a id="array-intercalate"></a>
+
+### `intercalate`
 
 ```
 intercalate :: Array a -> Array (Array a) -> Array a
@@ -673,7 +761,9 @@ intercalate ([0]) ([[1, 2], [3, 4]]) // => [1,2,0,3,4]
 
 ---
 
-### `groupBy` {#array-groupby}
+<a id="array-groupby"></a>
+
+### `groupBy`
 
 ```
 groupBy :: (a -> a -> Boolean) -> Array a -> Array (Array a)
@@ -687,7 +777,9 @@ groupBy (a => b => a === b) ([1, 1, 2, 3, 3]) // => [[1,1],[2],[3,3]]
 
 ---
 
-### `zip` {#array-zip}
+<a id="array-zip"></a>
+
+### `zip`
 
 ```
 zip :: Array a -> Array b -> Array [a, b]
@@ -701,7 +793,9 @@ zip ([1, 2, 3]) (['a', 'b']) // => [[1,'a'],[2,'b']]
 
 ---
 
-### `zipWith` {#array-zipwith}
+<a id="array-zipwith"></a>
+
+### `zipWith`
 
 ```
 zipWith :: (a -> b -> c) -> Array a -> Array b -> Array c
@@ -715,7 +809,9 @@ zipWith (a => b => a + b) ([1, 2, 3]) ([10, 20]) // => [11, 22]
 
 ---
 
-### `traverse` {#array-traverse}
+<a id="array-traverse"></a>
+
+### `traverse`
 
 ```
 traverse :: (b -> f b) -> (f (a->b) -> f a -> f b) -> ((a->b) -> f a -> f b) -> (a -> f b) -> Array a -> f (Array b)
@@ -733,17 +829,19 @@ traverse (Array.of) (ff => fa => ff.flatMap (f => fa.map (f))) (f => fa => fa.ma
 
 | Function | Signature |
 |---|---|
-| [`isBool`](#boolean-isbool) | `isBool :: a -> Boolean` |
-| [`equals`](#boolean-equals) | `equals :: Boolean -> Boolean -> Boolean` |
-| [`lte`](#boolean-lte) | `lte :: Boolean -> Boolean -> Boolean` |
-| [`lt`](#boolean-lt) | `lt :: Boolean -> Boolean -> Boolean` |
-| [`gte`](#boolean-gte) | `gte :: Boolean -> Boolean -> Boolean` |
-| [`gt`](#boolean-gt) | `gt :: Boolean -> Boolean -> Boolean` |
-| [`min`](#boolean-min) | `min :: Boolean -> Boolean -> Boolean` |
-| [`max`](#boolean-max) | `max :: Boolean -> Boolean -> Boolean` |
-| [`clamp`](#boolean-clamp) | `clamp :: Boolean -> Boolean -> Boolean -> Boolean` |
+| [<code>isBool</code>](#boolean-isbool) | `isBool :: a -> Boolean` |
+| [<code>equals</code>](#boolean-equals) | `equals :: Boolean -> Boolean -> Boolean` |
+| [<code>lte</code>](#boolean-lte) | `lte :: Boolean -> Boolean -> Boolean` |
+| [<code>lt</code>](#boolean-lt) | `lt :: Boolean -> Boolean -> Boolean` |
+| [<code>gte</code>](#boolean-gte) | `gte :: Boolean -> Boolean -> Boolean` |
+| [<code>gt</code>](#boolean-gt) | `gt :: Boolean -> Boolean -> Boolean` |
+| [<code>min</code>](#boolean-min) | `min :: Boolean -> Boolean -> Boolean` |
+| [<code>max</code>](#boolean-max) | `max :: Boolean -> Boolean -> Boolean` |
+| [<code>clamp</code>](#boolean-clamp) | `clamp :: Boolean -> Boolean -> Boolean -> Boolean` |
 
-### `isBool` {#boolean-isbool}
+<a id="boolean-isbool"></a>
+
+### `isBool`
 
 ```
 isBool :: a -> Boolean
@@ -757,7 +855,9 @@ isBool (true) // => true
 
 ---
 
-### `equals` {#boolean-equals}
+<a id="boolean-equals"></a>
+
+### `equals`
 
 ```
 equals :: Boolean -> Boolean -> Boolean
@@ -771,7 +871,9 @@ equals (true) (true) // => true
 
 ---
 
-### `lte` {#boolean-lte}
+<a id="boolean-lte"></a>
+
+### `lte`
 
 ```
 lte :: Boolean -> Boolean -> Boolean
@@ -785,7 +887,9 @@ lte (false) (true) // => true
 
 ---
 
-### `lt` {#boolean-lt}
+<a id="boolean-lt"></a>
+
+### `lt`
 
 ```
 lt :: Boolean -> Boolean -> Boolean
@@ -799,7 +903,9 @@ lt (false) (true) // => true
 
 ---
 
-### `gte` {#boolean-gte}
+<a id="boolean-gte"></a>
+
+### `gte`
 
 ```
 gte :: Boolean -> Boolean -> Boolean
@@ -813,7 +919,9 @@ gte (true) (false) // => true
 
 ---
 
-### `gt` {#boolean-gt}
+<a id="boolean-gt"></a>
+
+### `gt`
 
 ```
 gt :: Boolean -> Boolean -> Boolean
@@ -827,7 +935,9 @@ gt (true) (false) // => true
 
 ---
 
-### `min` {#boolean-min}
+<a id="boolean-min"></a>
+
+### `min`
 
 ```
 min :: Boolean -> Boolean -> Boolean
@@ -841,7 +951,9 @@ min (true) (false) // => false
 
 ---
 
-### `max` {#boolean-max}
+<a id="boolean-max"></a>
+
+### `max`
 
 ```
 max :: Boolean -> Boolean -> Boolean
@@ -855,7 +967,9 @@ max (true) (false) // => true
 
 ---
 
-### `clamp` {#boolean-clamp}
+<a id="boolean-clamp"></a>
+
+### `clamp`
 
 ```
 clamp :: Boolean -> Boolean -> Boolean -> Boolean
@@ -873,17 +987,19 @@ clamp (false) (true) (false) // => false
 
 | Function | Signature |
 |---|---|
-| [`equals`](#date-equals) | `equals :: Date -> Date -> Boolean` |
-| [`lte`](#date-lte) | `lte :: Date -> Date -> Boolean` |
-| [`lt`](#date-lt) | `lt :: Date -> Date -> Boolean` |
-| [`gte`](#date-gte) | `gte :: Date -> Date -> Boolean` |
-| [`gt`](#date-gt) | `gt :: Date -> Date -> Boolean` |
-| [`min`](#date-min) | `min :: Date -> Date -> Date` |
-| [`max`](#date-max) | `max :: Date -> Date -> Date` |
-| [`clamp`](#date-clamp) | `clamp :: Date -> Date -> Date -> Date` |
-| [`parseDate`](#date-parsedate) | `parseDate :: String -> Maybe Date` |
+| [<code>equals</code>](#date-equals) | `equals :: Date -> Date -> Boolean` |
+| [<code>lte</code>](#date-lte) | `lte :: Date -> Date -> Boolean` |
+| [<code>lt</code>](#date-lt) | `lt :: Date -> Date -> Boolean` |
+| [<code>gte</code>](#date-gte) | `gte :: Date -> Date -> Boolean` |
+| [<code>gt</code>](#date-gt) | `gt :: Date -> Date -> Boolean` |
+| [<code>min</code>](#date-min) | `min :: Date -> Date -> Date` |
+| [<code>max</code>](#date-max) | `max :: Date -> Date -> Date` |
+| [<code>clamp</code>](#date-clamp) | `clamp :: Date -> Date -> Date -> Date` |
+| [<code>parseDate</code>](#date-parsedate) | `parseDate :: String -> Maybe Date` |
 
-### `equals` {#date-equals}
+<a id="date-equals"></a>
+
+### `equals`
 
 ```
 equals :: Date -> Date -> Boolean
@@ -897,7 +1013,9 @@ equals (new Date (0)) (new Date (0)) // => true
 
 ---
 
-### `lte` {#date-lte}
+<a id="date-lte"></a>
+
+### `lte`
 
 ```
 lte :: Date -> Date -> Boolean
@@ -911,7 +1029,9 @@ lte (new Date (0)) (new Date (1)) // => true
 
 ---
 
-### `lt` {#date-lt}
+<a id="date-lt"></a>
+
+### `lt`
 
 ```
 lt :: Date -> Date -> Boolean
@@ -925,7 +1045,9 @@ lt (new Date (0)) (new Date (1)) // => true
 
 ---
 
-### `gte` {#date-gte}
+<a id="date-gte"></a>
+
+### `gte`
 
 ```
 gte :: Date -> Date -> Boolean
@@ -939,7 +1061,9 @@ gte (new Date (1)) (new Date (0)) // => true
 
 ---
 
-### `gt` {#date-gt}
+<a id="date-gt"></a>
+
+### `gt`
 
 ```
 gt :: Date -> Date -> Boolean
@@ -953,7 +1077,9 @@ gt (new Date (1)) (new Date (0)) // => true
 
 ---
 
-### `min` {#date-min}
+<a id="date-min"></a>
+
+### `min`
 
 ```
 min :: Date -> Date -> Date
@@ -967,7 +1093,9 @@ min (new Date (0)) (new Date (1)) // => new Date(0)
 
 ---
 
-### `max` {#date-max}
+<a id="date-max"></a>
+
+### `max`
 
 ```
 max :: Date -> Date -> Date
@@ -981,7 +1109,9 @@ max (new Date (0)) (new Date (1)) // => new Date(1)
 
 ---
 
-### `clamp` {#date-clamp}
+<a id="date-clamp"></a>
+
+### `clamp`
 
 ```
 clamp :: Date -> Date -> Date -> Date
@@ -995,7 +1125,9 @@ clamp (new Date (0)) (new Date (10)) (new Date (15)) // => new Date(10)
 
 ---
 
-### `parseDate` {#date-parsedate}
+<a id="date-parsedate"></a>
+
+### `parseDate`
 
 ```
 parseDate :: String -> Maybe Date
@@ -1013,34 +1145,36 @@ parseDate ('2020-01-01') // => just(new Date('2020-01-01'))
 
 | Function | Signature |
 |---|---|
-| [`left`](#either-left) | `left :: a -> Either a b` |
-| [`right`](#either-right) | `right :: b -> Either a b` |
-| [`fromNullable`](#either-fromnullable) | `fromNullable :: (() -> a) -> b -> Either a b` |
-| [`tryCatch`](#either-trycatch) | `tryCatch :: ((...a) -> b, (Error, a) -> c) -> ...a -> Either c b` |
-| [`fromPredicate`](#either-frompredicate) | `fromPredicate :: (a -> Boolean, a -> b) -> a -> Either b a` |
-| [`isLeft`](#either-isleft) | `isLeft :: a -> Boolean` |
-| [`isRight`](#either-isright) | `isRight :: a -> Boolean` |
-| [`either`](#either-either) | `either :: (a -> c) -> (b -> c) -> Either a b -> c` |
-| [`fromLeft`](#either-fromleft) | `fromLeft :: a -> Either a b -> a` |
-| [`fromRight`](#either-fromright) | `fromRight :: b -> Either a b -> b` |
-| [`fromEither`](#either-fromeither) | `fromEither :: Either a a -> a` |
-| [`lefts`](#either-lefts) | `lefts :: Array (Either a b) -> Array a` |
-| [`rights`](#either-rights) | `rights :: Array (Either a b) -> Array b` |
-| [`encase`](#either-encase) | `encase :: (a -> b) -> a -> Either Error b` |
-| [`eitherToMaybe`](#either-eithertomaybe) | `eitherToMaybe :: Either a b -> Maybe b` |
-| [`swap`](#either-swap) | `swap :: Either a b -> Either b a` |
-| [`mapRight`](#either-mapright) | `mapRight :: (b -> c) -> Either a b -> Either a c` |
-| [`mapLeft`](#either-mapleft) | `mapLeft :: (a -> c) -> Either a b -> Either c b` |
-| [`bimap`](#either-bimap) | `bimap :: (a -> c) -> (b -> d) -> Either a b -> Either c d` |
-| [`ap`](#either-ap) | `ap :: Either a (b -> c) -> Either a b -> Either a c` |
-| [`flatmapRight`](#either-flatmapright) | `flatmapRight :: (b -> Either a c) -> Either a b -> Either a c` |
-| [`flatmapLeft`](#either-flatmapleft) | `flatmapLeft :: (a -> Either c b) -> Either a b -> Either c b` |
-| [`flatmapFirst`](#either-flatmapfirst) | `flatmapFirst :: (b -> Either a c) -> Either a b -> Either a b` |
-| [`alt`](#either-alt) | `alt :: Either a b -> Either a b -> Either a b` |
-| [`fold`](#either-fold) | `fold :: ((c, b) -> c) -> c -> Either a b -> c` |
-| [`traverse`](#either-traverse) | `traverse :: (b -> f b) -> ((a->b) -> f a -> f b) -> (a -> f b) -> Either l a -> f (Either l b)` |
+| [<code>left</code>](#either-left) | `left :: a -> Either a b` |
+| [<code>right</code>](#either-right) | `right :: b -> Either a b` |
+| [<code>fromNullable</code>](#either-fromnullable) | `fromNullable :: (() -> a) -> b -> Either a b` |
+| [<code>tryCatch</code>](#either-trycatch) | `tryCatch :: ((...a) -> b, (Error, a) -> c) -> ...a -> Either c b` |
+| [<code>fromPredicate</code>](#either-frompredicate) | `fromPredicate :: (a -> Boolean, a -> b) -> a -> Either b a` |
+| [<code>isLeft</code>](#either-isleft) | `isLeft :: a -> Boolean` |
+| [<code>isRight</code>](#either-isright) | `isRight :: a -> Boolean` |
+| [<code>either</code>](#either-either) | `either :: (a -> c) -> (b -> c) -> Either a b -> c` |
+| [<code>fromLeft</code>](#either-fromleft) | `fromLeft :: a -> Either a b -> a` |
+| [<code>fromRight</code>](#either-fromright) | `fromRight :: b -> Either a b -> b` |
+| [<code>fromEither</code>](#either-fromeither) | `fromEither :: Either a a -> a` |
+| [<code>lefts</code>](#either-lefts) | `lefts :: Array (Either a b) -> Array a` |
+| [<code>rights</code>](#either-rights) | `rights :: Array (Either a b) -> Array b` |
+| [<code>encase</code>](#either-encase) | `encase :: (a -> b) -> a -> Either Error b` |
+| [<code>eitherToMaybe</code>](#either-eithertomaybe) | `eitherToMaybe :: Either a b -> Maybe b` |
+| [<code>swap</code>](#either-swap) | `swap :: Either a b -> Either b a` |
+| [<code>mapRight</code>](#either-mapright) | `mapRight :: (b -> c) -> Either a b -> Either a c` |
+| [<code>mapLeft</code>](#either-mapleft) | `mapLeft :: (a -> c) -> Either a b -> Either c b` |
+| [<code>bimap</code>](#either-bimap) | `bimap :: (a -> c) -> (b -> d) -> Either a b -> Either c d` |
+| [<code>ap</code>](#either-ap) | `ap :: Either a (b -> c) -> Either a b -> Either a c` |
+| [<code>flatmapRight</code>](#either-flatmapright) | `flatmapRight :: (b -> Either a c) -> Either a b -> Either a c` |
+| [<code>flatmapLeft</code>](#either-flatmapleft) | `flatmapLeft :: (a -> Either c b) -> Either a b -> Either c b` |
+| [<code>flatmapFirst</code>](#either-flatmapfirst) | `flatmapFirst :: (b -> Either a c) -> Either a b -> Either a b` |
+| [<code>alt</code>](#either-alt) | `alt :: Either a b -> Either a b -> Either a b` |
+| [<code>fold</code>](#either-fold) | `fold :: ((c, b) -> c) -> c -> Either a b -> c` |
+| [<code>traverse</code>](#either-traverse) | `traverse :: (b -> f b) -> ((a->b) -> f a -> f b) -> (a -> f b) -> Either l a -> f (Either l b)` |
 
-### `left` {#either-left}
+<a id="either-left"></a>
+
+### `left`
 
 ```
 left :: a -> Either a b
@@ -1054,7 +1188,9 @@ left ('err') // => { tag: 'left', left: 'err' }
 
 ---
 
-### `right` {#either-right}
+<a id="either-right"></a>
+
+### `right`
 
 ```
 right :: b -> Either a b
@@ -1068,7 +1204,9 @@ right (42) // => { tag: 'right', right: 42 }
 
 ---
 
-### `fromNullable` {#either-fromnullable}
+<a id="either-fromnullable"></a>
+
+### `fromNullable`
 
 ```
 fromNullable :: (() -> a) -> b -> Either a b
@@ -1082,7 +1220,9 @@ fromNullable (() => 'missing') (null) // => left('missing')
 
 ---
 
-### `tryCatch` {#either-trycatch}
+<a id="either-trycatch"></a>
+
+### `tryCatch`
 
 ```
 tryCatch :: ((...a) -> b, (Error, a) -> c) -> ...a -> Either c b
@@ -1096,7 +1236,9 @@ tryCatch (JSON.parse, e => e.message) ('bad') // => left('...')
 
 ---
 
-### `fromPredicate` {#either-frompredicate}
+<a id="either-frompredicate"></a>
+
+### `fromPredicate`
 
 ```
 fromPredicate :: (a -> Boolean, a -> b) -> a -> Either b a
@@ -1110,7 +1252,9 @@ fromPredicate (x => x > 0, x => 'neg') (3) // => right(3)
 
 ---
 
-### `isLeft` {#either-isleft}
+<a id="either-isleft"></a>
+
+### `isLeft`
 
 ```
 isLeft :: a -> Boolean
@@ -1124,7 +1268,9 @@ isLeft (left (1)) // => true
 
 ---
 
-### `isRight` {#either-isright}
+<a id="either-isright"></a>
+
+### `isRight`
 
 ```
 isRight :: a -> Boolean
@@ -1138,7 +1284,9 @@ isRight (right (1)) // => true
 
 ---
 
-### `either` {#either-either}
+<a id="either-either"></a>
+
+### `either`
 
 ```
 either :: (a -> c) -> (b -> c) -> Either a b -> c
@@ -1152,7 +1300,9 @@ either (l => l) (r => r) (right (42)) // => 42
 
 ---
 
-### `fromLeft` {#either-fromleft}
+<a id="either-fromleft"></a>
+
+### `fromLeft`
 
 ```
 fromLeft :: a -> Either a b -> a
@@ -1166,7 +1316,9 @@ fromLeft ('def') (right (1)) // => 'def'
 
 ---
 
-### `fromRight` {#either-fromright}
+<a id="either-fromright"></a>
+
+### `fromRight`
 
 ```
 fromRight :: b -> Either a b -> b
@@ -1180,7 +1332,9 @@ fromRight (0) (left ('x')) // => 0
 
 ---
 
-### `fromEither` {#either-fromeither}
+<a id="either-fromeither"></a>
+
+### `fromEither`
 
 ```
 fromEither :: Either a a -> a
@@ -1194,7 +1348,9 @@ fromEither (left (42)) // => 42
 
 ---
 
-### `lefts` {#either-lefts}
+<a id="either-lefts"></a>
+
+### `lefts`
 
 ```
 lefts :: Array (Either a b) -> Array a
@@ -1208,7 +1364,9 @@ lefts ([left (1), right (2), left (3)]) // => [1, 3]
 
 ---
 
-### `rights` {#either-rights}
+<a id="either-rights"></a>
+
+### `rights`
 
 ```
 rights :: Array (Either a b) -> Array b
@@ -1222,7 +1380,9 @@ rights ([left (1), right (2), right (3)]) // => [2, 3]
 
 ---
 
-### `encase` {#either-encase}
+<a id="either-encase"></a>
+
+### `encase`
 
 ```
 encase :: (a -> b) -> a -> Either Error b
@@ -1236,7 +1396,9 @@ encase (JSON.parse) ('{"a":1}') // => right({ a: 1 })
 
 ---
 
-### `eitherToMaybe` {#either-eithertomaybe}
+<a id="either-eithertomaybe"></a>
+
+### `eitherToMaybe`
 
 ```
 eitherToMaybe :: Either a b -> Maybe b
@@ -1250,7 +1412,9 @@ eitherToMaybe (right (1)) // => just(1)
 
 ---
 
-### `swap` {#either-swap}
+<a id="either-swap"></a>
+
+### `swap`
 
 ```
 swap :: Either a b -> Either b a
@@ -1264,7 +1428,9 @@ swap (left (1)) // => right(1)
 
 ---
 
-### `mapRight` {#either-mapright}
+<a id="either-mapright"></a>
+
+### `mapRight`
 
 ```
 mapRight :: (b -> c) -> Either a b -> Either a c
@@ -1278,7 +1444,9 @@ mapRight (x => x + 1) (right (1)) // => right(2)
 
 ---
 
-### `mapLeft` {#either-mapleft}
+<a id="either-mapleft"></a>
+
+### `mapLeft`
 
 ```
 mapLeft :: (a -> c) -> Either a b -> Either c b
@@ -1292,7 +1460,9 @@ mapLeft (x => x + '!') (left ('err')) // => left('err!')
 
 ---
 
-### `bimap` {#either-bimap}
+<a id="either-bimap"></a>
+
+### `bimap`
 
 ```
 bimap :: (a -> c) -> (b -> d) -> Either a b -> Either c d
@@ -1306,7 +1476,9 @@ bimap (l => l + '!') (r => r + 1) (right (2)) // => right(3)
 
 ---
 
-### `ap` {#either-ap}
+<a id="either-ap"></a>
+
+### `ap`
 
 ```
 ap :: Either a (b -> c) -> Either a b -> Either a c
@@ -1320,7 +1492,9 @@ ap (right (x => x + 1)) (right (2)) // => right(3)
 
 ---
 
-### `flatmapRight` {#either-flatmapright}
+<a id="either-flatmapright"></a>
+
+### `flatmapRight`
 
 ```
 flatmapRight :: (b -> Either a c) -> Either a b -> Either a c
@@ -1334,7 +1508,9 @@ flatmapRight (x => right (x + 1)) (right (2)) // => right(3)
 
 ---
 
-### `flatmapLeft` {#either-flatmapleft}
+<a id="either-flatmapleft"></a>
+
+### `flatmapLeft`
 
 ```
 flatmapLeft :: (a -> Either c b) -> Either a b -> Either c b
@@ -1348,7 +1524,9 @@ flatmapLeft (e => left (e + '!')) (left ('x')) // => left('x!')
 
 ---
 
-### `flatmapFirst` {#either-flatmapfirst}
+<a id="either-flatmapfirst"></a>
+
+### `flatmapFirst`
 
 ```
 flatmapFirst :: (b -> Either a c) -> Either a b -> Either a b
@@ -1362,7 +1540,9 @@ flatmapFirst (x => left ('stop')) (right (1)) // => left('stop')
 
 ---
 
-### `alt` {#either-alt}
+<a id="either-alt"></a>
+
+### `alt`
 
 ```
 alt :: Either a b -> Either a b -> Either a b
@@ -1376,7 +1556,9 @@ alt (right (2)) (left ('x')) // => right(2)
 
 ---
 
-### `fold` {#either-fold}
+<a id="either-fold"></a>
+
+### `fold`
 
 ```
 fold :: ((c, b) -> c) -> c -> Either a b -> c
@@ -1390,7 +1572,9 @@ fold ((acc, x) => acc + x, 0) (right (5)) // => 5
 
 ---
 
-### `traverse` {#either-traverse}
+<a id="either-traverse"></a>
+
+### `traverse`
 
 ```
 traverse :: (b -> f b) -> ((a->b) -> f a -> f b) -> (a -> f b) -> Either l a -> f (Either l b)
@@ -1408,24 +1592,26 @@ traverse (Array.of) (f => xs => xs.map (f)) (x => [x, x]) (right (1)) // => [rig
 
 | Function | Signature |
 |---|---|
-| [`pipe`](#fn-pipe) | `pipe :: Foldable f => f (Any -> Any) -> a -> b` |
-| [`pipeK`](#fn-pipek) | `pipeK :: (Foldable f, Flatmap m) => f (Any -> m Any) -> m a -> m b` |
-| [`T`](#fn-t) | `T :: a -> (a -> b) -> b` |
-| [`on`](#fn-on) | `on :: (b -> b -> c) -> (a -> b) -> a -> a -> c` |
-| [`id`](#fn-id) | `id :: a -> a` |
-| [`compose`](#fn-compose) | `compose :: (b -> c) -> (a -> b) -> a -> c` |
-| [`flip`](#fn-flip) | `flip :: (a -> b -> c) -> b -> a -> c` |
-| [`map`](#fn-map) | `map :: (a -> b) -> (e -> a) -> e -> b` |
-| [`ap`](#fn-ap) | `ap :: (e -> a -> b) -> (e -> a) -> e -> b` |
-| [`of`](#fn-of) | `of :: a -> e -> a` |
-| [`flatmap`](#fn-flatmap) | `flatmap :: (a -> e -> b) -> (e -> a) -> e -> b` |
-| [`contramap`](#fn-contramap) | `contramap :: (b -> a) -> (a -> c) -> b -> c` |
-| [`promap`](#fn-promap) | `promap :: (a -> b) -> (c -> d) -> (b -> c) -> a -> d` |
-| [`extend`](#fn-extend) | `extend :: (concat -> (e -> a) -> b) -> (e -> a) -> e -> b` |
-| [`chainRec`](#fn-chainrec) | `chainRec :: ((a -> Step, b -> Step, a) -> e -> Step) -> a -> e -> b` |
-| [`handleThrow`](#fn-handlethrow) | `handleThrow :: ((...d) -> a) -> (a, d -> r) -> (Error, d -> r) -> (...d) -> r` |
+| [<code>pipe</code>](#fn-pipe) | `pipe :: Foldable f => f (Any -> Any) -> a -> b` |
+| [<code>pipeK</code>](#fn-pipek) | `pipeK :: (Foldable f, Flatmap m) => f (Any -> m Any) -> m a -> m b` |
+| [<code>T</code>](#fn-t) | `T :: a -> (a -> b) -> b` |
+| [<code>on</code>](#fn-on) | `on :: (b -> b -> c) -> (a -> b) -> a -> a -> c` |
+| [<code>id</code>](#fn-id) | `id :: a -> a` |
+| [<code>compose</code>](#fn-compose) | `compose :: (b -> c) -> (a -> b) -> a -> c` |
+| [<code>flip</code>](#fn-flip) | `flip :: (a -> b -> c) -> b -> a -> c` |
+| [<code>map</code>](#fn-map) | `map :: (a -> b) -> (e -> a) -> e -> b` |
+| [<code>ap</code>](#fn-ap) | `ap :: (e -> a -> b) -> (e -> a) -> e -> b` |
+| [<code>of</code>](#fn-of) | `of :: a -> e -> a` |
+| [<code>flatmap</code>](#fn-flatmap) | `flatmap :: (a -> e -> b) -> (e -> a) -> e -> b` |
+| [<code>contramap</code>](#fn-contramap) | `contramap :: (b -> a) -> (a -> c) -> b -> c` |
+| [<code>promap</code>](#fn-promap) | `promap :: (a -> b) -> (c -> d) -> (b -> c) -> a -> d` |
+| [<code>extend</code>](#fn-extend) | `extend :: (concat -> (e -> a) -> b) -> (e -> a) -> e -> b` |
+| [<code>chainRec</code>](#fn-chainrec) | `chainRec :: ((a -> Step, b -> Step, a) -> e -> Step) -> a -> e -> b` |
+| [<code>handleThrow</code>](#fn-handlethrow) | `handleThrow :: ((...d) -> a) -> (a, d -> r) -> (Error, d -> r) -> (...d) -> r` |
 
-### `pipe` {#fn-pipe}
+<a id="fn-pipe"></a>
+
+### `pipe`
 
 ```
 pipe :: Foldable f => f (Any -> Any) -> a -> b
@@ -1439,7 +1625,9 @@ pipe ([x => x + 1, Math.sqrt]) (99) // => 10
 
 ---
 
-### `pipeK` {#fn-pipek}
+<a id="fn-pipek"></a>
+
+### `pipeK`
 
 ```
 pipeK :: (Foldable f, Flatmap m) => f (Any -> m Any) -> m a -> m b
@@ -1453,7 +1641,9 @@ pipeK ([f, g]) (mx) // flatmap (g) (flatmap (f) (mx))
 
 ---
 
-### `T` {#fn-t}
+<a id="fn-t"></a>
+
+### `T`
 
 ```
 T :: a -> (a -> b) -> b
@@ -1467,7 +1657,9 @@ T (42) (x => x + 1) // => 43
 
 ---
 
-### `on` {#fn-on}
+<a id="fn-on"></a>
+
+### `on`
 
 ```
 on :: (b -> b -> c) -> (a -> b) -> a -> a -> c
@@ -1481,7 +1673,9 @@ on ((a) => (b) => a.concat (b)) (x => x.reverse ()) ([1,2]) ([3,4]) // => [2,1,3
 
 ---
 
-### `id` {#fn-id}
+<a id="fn-id"></a>
+
+### `id`
 
 ```
 id :: a -> a
@@ -1495,7 +1689,9 @@ id (42) // => 42
 
 ---
 
-### `compose` {#fn-compose}
+<a id="fn-compose"></a>
+
+### `compose`
 
 ```
 compose :: (b -> c) -> (a -> b) -> a -> c
@@ -1509,7 +1705,9 @@ compose (x => x * 2) (x => x + 1) (3) // => 8
 
 ---
 
-### `flip` {#fn-flip}
+<a id="fn-flip"></a>
+
+### `flip`
 
 ```
 flip :: (a -> b -> c) -> b -> a -> c
@@ -1523,7 +1721,9 @@ flip (a => b => a - b) (1) (3) // => 2
 
 ---
 
-### `map` {#fn-map}
+<a id="fn-map"></a>
+
+### `map`
 
 ```
 map :: (a -> b) -> (e -> a) -> e -> b
@@ -1537,7 +1737,9 @@ map (x => x + 1) (x => x * 2) (3) // => 7
 
 ---
 
-### `ap` {#fn-ap}
+<a id="fn-ap"></a>
+
+### `ap`
 
 ```
 ap :: (e -> a -> b) -> (e -> a) -> e -> b
@@ -1551,7 +1753,9 @@ ap (e => x => e + x) (e => e * 2) (3) // => 9
 
 ---
 
-### `of` {#fn-of}
+<a id="fn-of"></a>
+
+### `of`
 
 ```
 of :: a -> e -> a
@@ -1565,7 +1769,9 @@ of (42) ('ignored') // => 42
 
 ---
 
-### `flatmap` {#fn-flatmap}
+<a id="fn-flatmap"></a>
+
+### `flatmap`
 
 ```
 flatmap :: (a -> e -> b) -> (e -> a) -> e -> b
@@ -1579,7 +1785,9 @@ flatmap (a => e => a + e) (e => e * 2) (3) // => 9
 
 ---
 
-### `contramap` {#fn-contramap}
+<a id="fn-contramap"></a>
+
+### `contramap`
 
 ```
 contramap :: (b -> a) -> (a -> c) -> b -> c
@@ -1593,7 +1801,9 @@ contramap (x => x + 1) (x => x * 2) (3) // => 8
 
 ---
 
-### `promap` {#fn-promap}
+<a id="fn-promap"></a>
+
+### `promap`
 
 ```
 promap :: (a -> b) -> (c -> d) -> (b -> c) -> a -> d
@@ -1607,7 +1817,9 @@ promap (x => x + 1) (x => x * 2) (x => x) (3) // => 8
 
 ---
 
-### `extend` {#fn-extend}
+<a id="fn-extend"></a>
+
+### `extend`
 
 ```
 extend :: (concat -> (e -> a) -> b) -> (e -> a) -> e -> b
@@ -1621,7 +1833,9 @@ extend (concatFn) (f) (wa) (x)
 
 ---
 
-### `chainRec` {#fn-chainrec}
+<a id="fn-chainrec"></a>
+
+### `chainRec`
 
 ```
 chainRec :: ((a -> Step, b -> Step, a) -> e -> Step) -> a -> e -> b
@@ -1635,7 +1849,9 @@ chainRec ((next, done, n) => _ => n <= 0 ? done (n) : next (n - 1)) (1000) (null
 
 ---
 
-### `handleThrow` {#fn-handlethrow}
+<a id="fn-handlethrow"></a>
+
+### `handleThrow`
 
 ```
 handleThrow :: ((...d) -> a) -> (a, d -> r) -> (Error, d -> r) -> (...d) -> r
@@ -1653,16 +1869,18 @@ handleThrow (JSON.parse) (r => r) (e => null) ('{}')
 
 | Function | Signature |
 |---|---|
-| [`and`](#logic-and) | `and :: Boolean -> Boolean -> Boolean` |
-| [`or`](#logic-or) | `or :: Boolean -> Boolean -> Boolean` |
-| [`not`](#logic-not) | `not :: Boolean -> Boolean` |
-| [`complement`](#logic-complement) | `complement :: (a -> Boolean) -> a -> Boolean` |
-| [`boolean_`](#logic-boolean_) | `boolean_ :: a -> a -> Boolean -> a` |
-| [`ifElse`](#logic-ifelse) | `ifElse :: (a -> Boolean) -> (a -> b) -> (a -> b) -> a -> b` |
-| [`when`](#logic-when) | `when :: (a -> Boolean) -> (a -> a) -> a -> a` |
-| [`unless`](#logic-unless) | `unless :: (a -> Boolean) -> (a -> a) -> a -> a` |
+| [<code>and</code>](#logic-and) | `and :: Boolean -> Boolean -> Boolean` |
+| [<code>or</code>](#logic-or) | `or :: Boolean -> Boolean -> Boolean` |
+| [<code>not</code>](#logic-not) | `not :: Boolean -> Boolean` |
+| [<code>complement</code>](#logic-complement) | `complement :: (a -> Boolean) -> a -> Boolean` |
+| [<code>boolean_</code>](#logic-boolean_) | `boolean_ :: a -> a -> Boolean -> a` |
+| [<code>ifElse</code>](#logic-ifelse) | `ifElse :: (a -> Boolean) -> (a -> b) -> (a -> b) -> a -> b` |
+| [<code>when</code>](#logic-when) | `when :: (a -> Boolean) -> (a -> a) -> a -> a` |
+| [<code>unless</code>](#logic-unless) | `unless :: (a -> Boolean) -> (a -> a) -> a -> a` |
 
-### `and` {#logic-and}
+<a id="logic-and"></a>
+
+### `and`
 
 ```
 and :: Boolean -> Boolean -> Boolean
@@ -1676,7 +1894,9 @@ and (true) (false) // => false
 
 ---
 
-### `or` {#logic-or}
+<a id="logic-or"></a>
+
+### `or`
 
 ```
 or :: Boolean -> Boolean -> Boolean
@@ -1690,7 +1910,9 @@ or (false) (true) // => true
 
 ---
 
-### `not` {#logic-not}
+<a id="logic-not"></a>
+
+### `not`
 
 ```
 not :: Boolean -> Boolean
@@ -1704,7 +1926,9 @@ not (true) // => false
 
 ---
 
-### `complement` {#logic-complement}
+<a id="logic-complement"></a>
+
+### `complement`
 
 ```
 complement :: (a -> Boolean) -> a -> Boolean
@@ -1718,7 +1942,9 @@ complement (x => x > 0) (-1) // => true
 
 ---
 
-### `boolean_` {#logic-boolean_}
+<a id="logic-boolean_"></a>
+
+### `boolean_`
 
 ```
 boolean_ :: a -> a -> Boolean -> a
@@ -1732,7 +1958,9 @@ boolean_ ('no') ('yes') (false) // => 'no'
 
 ---
 
-### `ifElse` {#logic-ifelse}
+<a id="logic-ifelse"></a>
+
+### `ifElse`
 
 ```
 ifElse :: (a -> Boolean) -> (a -> b) -> (a -> b) -> a -> b
@@ -1746,7 +1974,9 @@ ifElse (x => x > 0) (x => x) (x => -x) (-3) // => 3
 
 ---
 
-### `when` {#logic-when}
+<a id="logic-when"></a>
+
+### `when`
 
 ```
 when :: (a -> Boolean) -> (a -> a) -> a -> a
@@ -1760,7 +1990,9 @@ when (x => x < 0) (() => 0) (-1) // => 0
 
 ---
 
-### `unless` {#logic-unless}
+<a id="logic-unless"></a>
+
+### `unless`
 
 ```
 unless :: (a -> Boolean) -> (a -> a) -> a -> a
@@ -1778,34 +2010,36 @@ unless (x => x > 0) (x => -x) (-3) // => 3
 
 | Function | Signature |
 |---|---|
-| [`just`](#maybe-just) | `just :: a -> Maybe a` |
-| [`nothing`](#maybe-nothing) | `nothing :: () -> Maybe never` |
-| [`fromNullable`](#maybe-fromnullable) | `fromNullable :: a -> Maybe (NonNullable a)` |
-| [`fromPredicate`](#maybe-frompredicate) | `fromPredicate :: (a -> Boolean) -> a -> Maybe a` |
-| [`tryCatch`](#maybe-trycatch) | `tryCatch :: (() -> a) -> Maybe a` |
-| [`isJust`](#maybe-isjust) | `isJust :: unknown -> Boolean` |
-| [`isNothing`](#maybe-isnothing) | `isNothing :: unknown -> Boolean` |
-| [`isMaybe`](#maybe-ismaybe) | `isMaybe :: unknown -> Boolean` |
-| [`maybe`](#maybe-maybe) | `maybe :: b -> (a -> b) -> Maybe a -> b` |
-| [`maybe_`](#maybe-maybe_) | `maybe_ :: (() -> b) -> (a -> b) -> Maybe a -> b` |
-| [`fromMaybe`](#maybe-frommaybe) | `fromMaybe :: a -> Maybe a -> a` |
-| [`fromMaybe_`](#maybe-frommaybe_) | `fromMaybe_ :: (() -> a) -> Maybe a -> a` |
-| [`justs`](#maybe-justs) | `justs :: Array (Maybe a) -> Array a` |
-| [`toNull`](#maybe-tonull) | `toNull :: Maybe a -> a \| null` |
-| [`toUndefined`](#maybe-toundefined) | `toUndefined :: Maybe a -> a \| undefined` |
-| [`maybeToEither`](#maybe-maybetoeither) | `maybeToEither :: a -> Maybe b -> Either a b` |
-| [`map`](#maybe-map) | `map :: (a -> b) -> Maybe a -> Maybe b` |
-| [`filter`](#maybe-filter) | `filter :: (a -> Boolean) -> Maybe a -> Maybe a` |
-| [`filterMap`](#maybe-filtermap) | `filterMap :: (a -> Maybe b) -> Maybe a -> Maybe b` |
-| [`flatmap`](#maybe-flatmap) | `flatmap :: (a -> Maybe b) -> Maybe a -> Maybe b` |
-| [`mapNullable`](#maybe-mapnullable) | `mapNullable :: (a -> b \| null \| undefined) -> Maybe a -> Maybe b` |
-| [`mapMaybe`](#maybe-mapmaybe) | `` |
-| [`ap`](#maybe-ap) | `ap :: Maybe (a -> b) -> Maybe a -> Maybe b` |
-| [`alt`](#maybe-alt) | `alt :: Maybe a -> Maybe a -> Maybe a` |
-| [`exists`](#maybe-exists) | `exists :: (a -> Boolean) -> Maybe a -> Boolean` |
-| [`fold`](#maybe-fold) | `fold :: ((b, a) -> b) -> b -> Maybe a -> b` |
+| [<code>just</code>](#maybe-just) | `just :: a -> Maybe a` |
+| [<code>nothing</code>](#maybe-nothing) | `nothing :: () -> Maybe never` |
+| [<code>fromNullable</code>](#maybe-fromnullable) | `fromNullable :: a -> Maybe (NonNullable a)` |
+| [<code>fromPredicate</code>](#maybe-frompredicate) | `fromPredicate :: (a -> Boolean) -> a -> Maybe a` |
+| [<code>tryCatch</code>](#maybe-trycatch) | `tryCatch :: (() -> a) -> Maybe a` |
+| [<code>isJust</code>](#maybe-isjust) | `isJust :: unknown -> Boolean` |
+| [<code>isNothing</code>](#maybe-isnothing) | `isNothing :: unknown -> Boolean` |
+| [<code>isMaybe</code>](#maybe-ismaybe) | `isMaybe :: unknown -> Boolean` |
+| [<code>maybe</code>](#maybe-maybe) | `maybe :: b -> (a -> b) -> Maybe a -> b` |
+| [<code>maybe_</code>](#maybe-maybe_) | `maybe_ :: (() -> b) -> (a -> b) -> Maybe a -> b` |
+| [<code>fromMaybe</code>](#maybe-frommaybe) | `fromMaybe :: a -> Maybe a -> a` |
+| [<code>fromMaybe_</code>](#maybe-frommaybe_) | `fromMaybe_ :: (() -> a) -> Maybe a -> a` |
+| [<code>justs</code>](#maybe-justs) | `justs :: Array (Maybe a) -> Array a` |
+| [<code>toNull</code>](#maybe-tonull) | `toNull :: Maybe a -> a \| null` |
+| [<code>toUndefined</code>](#maybe-toundefined) | `toUndefined :: Maybe a -> a \| undefined` |
+| [<code>maybeToEither</code>](#maybe-maybetoeither) | `maybeToEither :: a -> Maybe b -> Either a b` |
+| [<code>map</code>](#maybe-map) | `map :: (a -> b) -> Maybe a -> Maybe b` |
+| [<code>filter</code>](#maybe-filter) | `filter :: (a -> Boolean) -> Maybe a -> Maybe a` |
+| [<code>filterMap</code>](#maybe-filtermap) | `filterMap :: (a -> Maybe b) -> Maybe a -> Maybe b` |
+| [<code>flatmap</code>](#maybe-flatmap) | `flatmap :: (a -> Maybe b) -> Maybe a -> Maybe b` |
+| [<code>mapNullable</code>](#maybe-mapnullable) | `mapNullable :: (a -> b \| null \| undefined) -> Maybe a -> Maybe b` |
+| [<code>mapMaybe</code>](#maybe-mapmaybe) | `` |
+| [<code>ap</code>](#maybe-ap) | `ap :: Maybe (a -> b) -> Maybe a -> Maybe b` |
+| [<code>alt</code>](#maybe-alt) | `alt :: Maybe a -> Maybe a -> Maybe a` |
+| [<code>exists</code>](#maybe-exists) | `exists :: (a -> Boolean) -> Maybe a -> Boolean` |
+| [<code>fold</code>](#maybe-fold) | `fold :: ((b, a) -> b) -> b -> Maybe a -> b` |
 
-### `just` {#maybe-just}
+<a id="maybe-just"></a>
+
+### `just`
 
 ```
 just :: a -> Maybe a
@@ -1819,7 +2053,9 @@ just (1) // => { tag: 'just', value: 1 }
 
 ---
 
-### `nothing` {#maybe-nothing}
+<a id="maybe-nothing"></a>
+
+### `nothing`
 
 ```
 nothing :: () -> Maybe never
@@ -1833,7 +2069,9 @@ nothing () // => { tag: 'nothing' }
 
 ---
 
-### `fromNullable` {#maybe-fromnullable}
+<a id="maybe-fromnullable"></a>
+
+### `fromNullable`
 
 ```
 fromNullable :: a -> Maybe (NonNullable a)
@@ -1848,7 +2086,9 @@ fromNullable (null) // => nothing()
 
 ---
 
-### `fromPredicate` {#maybe-frompredicate}
+<a id="maybe-frompredicate"></a>
+
+### `fromPredicate`
 
 ```
 fromPredicate :: (a -> Boolean) -> a -> Maybe a
@@ -1862,7 +2102,9 @@ fromPredicate (x => x > 0) (1) // => just(1)
 
 ---
 
-### `tryCatch` {#maybe-trycatch}
+<a id="maybe-trycatch"></a>
+
+### `tryCatch`
 
 ```
 tryCatch :: (() -> a) -> Maybe a
@@ -1876,7 +2118,9 @@ tryCatch (() => JSON.parse ('1')) // => just(1)
 
 ---
 
-### `isJust` {#maybe-isjust}
+<a id="maybe-isjust"></a>
+
+### `isJust`
 
 ```
 isJust :: unknown -> Boolean
@@ -1890,7 +2134,9 @@ isJust (just (1)) // => true
 
 ---
 
-### `isNothing` {#maybe-isnothing}
+<a id="maybe-isnothing"></a>
+
+### `isNothing`
 
 ```
 isNothing :: unknown -> Boolean
@@ -1904,7 +2150,9 @@ isNothing (nothing ()) // => true
 
 ---
 
-### `isMaybe` {#maybe-ismaybe}
+<a id="maybe-ismaybe"></a>
+
+### `isMaybe`
 
 ```
 isMaybe :: unknown -> Boolean
@@ -1918,7 +2166,9 @@ isMaybe (just (1)) // => true
 
 ---
 
-### `maybe` {#maybe-maybe}
+<a id="maybe-maybe"></a>
+
+### `maybe`
 
 ```
 maybe :: b -> (a -> b) -> Maybe a -> b
@@ -1932,7 +2182,9 @@ maybe (0) (x => x + 1) (just (1)) // => 2
 
 ---
 
-### `maybe_` {#maybe-maybe_}
+<a id="maybe-maybe_"></a>
+
+### `maybe_`
 
 ```
 maybe_ :: (() -> b) -> (a -> b) -> Maybe a -> b
@@ -1946,7 +2198,9 @@ maybe_ (() => 0) (x => x + 1) (nothing ()) // => 0
 
 ---
 
-### `fromMaybe` {#maybe-frommaybe}
+<a id="maybe-frommaybe"></a>
+
+### `fromMaybe`
 
 ```
 fromMaybe :: a -> Maybe a -> a
@@ -1960,7 +2214,9 @@ fromMaybe (0) (just (5)) // => 5
 
 ---
 
-### `fromMaybe_` {#maybe-frommaybe_}
+<a id="maybe-frommaybe_"></a>
+
+### `fromMaybe_`
 
 ```
 fromMaybe_ :: (() -> a) -> Maybe a -> a
@@ -1974,7 +2230,9 @@ fromMaybe_ (() => 0) (nothing ()) // => 0
 
 ---
 
-### `justs` {#maybe-justs}
+<a id="maybe-justs"></a>
+
+### `justs`
 
 ```
 justs :: Array (Maybe a) -> Array a
@@ -1988,7 +2246,9 @@ justs([just (1), nothing (), just (2)]) // => [1, 2]
 
 ---
 
-### `toNull` {#maybe-tonull}
+<a id="maybe-tonull"></a>
+
+### `toNull`
 
 ```
 toNull :: Maybe a -> a | null
@@ -2002,7 +2262,9 @@ toNull (nothing ()) // => null
 
 ---
 
-### `toUndefined` {#maybe-toundefined}
+<a id="maybe-toundefined"></a>
+
+### `toUndefined`
 
 ```
 toUndefined :: Maybe a -> a | undefined
@@ -2016,7 +2278,9 @@ toUndefined (nothing ()) // => undefined
 
 ---
 
-### `maybeToEither` {#maybe-maybetoeither}
+<a id="maybe-maybetoeither"></a>
+
+### `maybeToEither`
 
 ```
 maybeToEither :: a -> Maybe b -> Either a b
@@ -2030,7 +2294,9 @@ maybeToEither ('err') (just (1)) // => { tag: 'right', right: 1 }
 
 ---
 
-### `map` {#maybe-map}
+<a id="maybe-map"></a>
+
+### `map`
 
 ```
 map :: (a -> b) -> Maybe a -> Maybe b
@@ -2044,7 +2310,9 @@ map (x => x + 1) (just (1)) // => just(2)
 
 ---
 
-### `filter` {#maybe-filter}
+<a id="maybe-filter"></a>
+
+### `filter`
 
 ```
 filter :: (a -> Boolean) -> Maybe a -> Maybe a
@@ -2058,7 +2326,9 @@ filter(x => x > 0)(just(1)) // => just(1)
 
 ---
 
-### `filterMap` {#maybe-filtermap}
+<a id="maybe-filtermap"></a>
+
+### `filterMap`
 
 ```
 filterMap :: (a -> Maybe b) -> Maybe a -> Maybe b
@@ -2072,7 +2342,9 @@ filterMap (x => x > 0 ? just (x) : nothing ()) (just (-1)) // => nothing()
 
 ---
 
-### `flatmap` {#maybe-flatmap}
+<a id="maybe-flatmap"></a>
+
+### `flatmap`
 
 ```
 flatmap :: (a -> Maybe b) -> Maybe a -> Maybe b
@@ -2086,7 +2358,9 @@ flatmap(x => just(x + 1))(just(1)) // => just(2)
 
 ---
 
-### `mapNullable` {#maybe-mapnullable}
+<a id="maybe-mapnullable"></a>
+
+### `mapNullable`
 
 ```
 mapNullable :: (a -> b | null | undefined) -> Maybe a -> Maybe b
@@ -2100,7 +2374,9 @@ mapNullable (x => x.name) (just ({ name: 'Alice' })) // => just('Alice')
 
 ---
 
-### `mapMaybe` {#maybe-mapmaybe}
+<a id="maybe-mapmaybe"></a>
+
+### `mapMaybe`
 
 Maps over an array, discarding Nothings and unwrapping Justs.
 
@@ -2111,7 +2387,9 @@ mapMaybe (x => x > 0 ? just (x) : nothing ()) ([1, -2, 3]) // => [1, 3]
 
 ---
 
-### `ap` {#maybe-ap}
+<a id="maybe-ap"></a>
+
+### `ap`
 
 ```
 ap :: Maybe (a -> b) -> Maybe a -> Maybe b
@@ -2125,7 +2403,9 @@ ap (just (x => x + 1)) (just (1)) // => just(2)
 
 ---
 
-### `alt` {#maybe-alt}
+<a id="maybe-alt"></a>
+
+### `alt`
 
 ```
 alt :: Maybe a -> Maybe a -> Maybe a
@@ -2139,7 +2419,9 @@ alt (just (2)) (nothing ()) // => just(2)
 
 ---
 
-### `exists` {#maybe-exists}
+<a id="maybe-exists"></a>
+
+### `exists`
 
 ```
 exists :: (a -> Boolean) -> Maybe a -> Boolean
@@ -2153,7 +2435,9 @@ exists (x => x > 0) (just (1)) // => true
 
 ---
 
-### `fold` {#maybe-fold}
+<a id="maybe-fold"></a>
+
+### `fold`
 
 ```
 fold :: ((b, a) -> b) -> b -> Maybe a -> b
@@ -2171,14 +2455,16 @@ fold ((acc, x) => acc + x, 0) (just (5)) // => 5
 
 | Function | Signature |
 |---|---|
-| [`nil`](#nil-nil) | `nil :: a -> Nil a` |
-| [`init`](#nil-init) | `init :: () -> Nil never` |
-| [`fromPredicate`](#nil-frompredicate) | `fromPredicate :: (a -> Boolean) -> Nil a -> Nil a` |
-| [`fromMaybe`](#nil-frommaybe) | `fromMaybe :: Maybe a -> Nil a` |
-| [`isNil`](#nil-isnil) | `isNil :: Nil a -> Boolean` |
-| [`isNotNil`](#nil-isnotnil) | `isNotNil :: Nil a -> Boolean` |
+| [<code>nil</code>](#nil-nil) | `nil :: a -> Nil a` |
+| [<code>init</code>](#nil-init) | `init :: () -> Nil never` |
+| [<code>fromPredicate</code>](#nil-frompredicate) | `fromPredicate :: (a -> Boolean) -> Nil a -> Nil a` |
+| [<code>fromMaybe</code>](#nil-frommaybe) | `fromMaybe :: Maybe a -> Nil a` |
+| [<code>isNil</code>](#nil-isnil) | `isNil :: Nil a -> Boolean` |
+| [<code>isNotNil</code>](#nil-isnotnil) | `isNotNil :: Nil a -> Boolean` |
 
-### `nil` {#nil-nil}
+<a id="nil-nil"></a>
+
+### `nil`
 
 ```
 nil :: a -> Nil a
@@ -2192,7 +2478,9 @@ nil (undefined) // => null
 
 ---
 
-### `init` {#nil-init}
+<a id="nil-init"></a>
+
+### `init`
 
 ```
 init :: () -> Nil never
@@ -2206,7 +2494,9 @@ init () // => null
 
 ---
 
-### `fromPredicate` {#nil-frompredicate}
+<a id="nil-frompredicate"></a>
+
+### `fromPredicate`
 
 ```
 fromPredicate :: (a -> Boolean) -> Nil a -> Nil a
@@ -2220,7 +2510,9 @@ fromPredicate (x => x > 0) (5) // => 5
 
 ---
 
-### `fromMaybe` {#nil-frommaybe}
+<a id="nil-frommaybe"></a>
+
+### `fromMaybe`
 
 ```
 fromMaybe :: Maybe a -> Nil a
@@ -2234,7 +2526,9 @@ fromMaybe (just (1)) // => 1
 
 ---
 
-### `isNil` {#nil-isnil}
+<a id="nil-isnil"></a>
+
+### `isNil`
 
 ```
 isNil :: Nil a -> Boolean
@@ -2248,7 +2542,9 @@ isNil (null) // => true
 
 ---
 
-### `isNotNil` {#nil-isnotnil}
+<a id="nil-isnotnil"></a>
+
+### `isNotNil`
 
 ```
 isNotNil :: Nil a -> Boolean
@@ -2266,29 +2562,31 @@ isNotNil (0) // => true
 
 | Function | Signature |
 |---|---|
-| [`isNum`](#number-isnum) | `isNum :: a -> Boolean` |
-| [`equals`](#number-equals) | `equals :: Number -> Number -> Boolean` |
-| [`lte`](#number-lte) | `lte :: Number -> Number -> Boolean` |
-| [`lt`](#number-lt) | `lt :: Number -> Number -> Boolean` |
-| [`gte`](#number-gte) | `gte :: Number -> Number -> Boolean` |
-| [`gt`](#number-gt) | `gt :: Number -> Number -> Boolean` |
-| [`min`](#number-min) | `min :: Number -> Number -> Number` |
-| [`max`](#number-max) | `max :: Number -> Number -> Number` |
-| [`clamp`](#number-clamp) | `clamp :: Number -> Number -> Number -> Number` |
-| [`negate`](#number-negate) | `negate :: Number -> Number` |
-| [`add`](#number-add) | `add :: Number -> Number -> Number` |
-| [`sub`](#number-sub) | `sub :: Number -> Number -> Number` |
-| [`mult`](#number-mult) | `mult :: Number -> Number -> Number` |
-| [`div`](#number-div) | `div :: Number -> Number -> Number` |
-| [`pow`](#number-pow) | `pow :: Number -> Number -> Number` |
-| [`sum`](#number-sum) | `sum :: Array Number -> Number` |
-| [`product`](#number-product) | `product :: Array Number -> Number` |
-| [`even`](#number-even) | `even :: Integer -> Boolean` |
-| [`odd`](#number-odd) | `odd :: Integer -> Boolean` |
-| [`parseFloat_`](#number-parsefloat_) | `parseFloat_ :: String -> Maybe Number` |
-| [`parseInt_`](#number-parseint_) | `parseInt_ :: Integer -> String -> Maybe Integer` |
+| [<code>isNum</code>](#number-isnum) | `isNum :: a -> Boolean` |
+| [<code>equals</code>](#number-equals) | `equals :: Number -> Number -> Boolean` |
+| [<code>lte</code>](#number-lte) | `lte :: Number -> Number -> Boolean` |
+| [<code>lt</code>](#number-lt) | `lt :: Number -> Number -> Boolean` |
+| [<code>gte</code>](#number-gte) | `gte :: Number -> Number -> Boolean` |
+| [<code>gt</code>](#number-gt) | `gt :: Number -> Number -> Boolean` |
+| [<code>min</code>](#number-min) | `min :: Number -> Number -> Number` |
+| [<code>max</code>](#number-max) | `max :: Number -> Number -> Number` |
+| [<code>clamp</code>](#number-clamp) | `clamp :: Number -> Number -> Number -> Number` |
+| [<code>negate</code>](#number-negate) | `negate :: Number -> Number` |
+| [<code>add</code>](#number-add) | `add :: Number -> Number -> Number` |
+| [<code>sub</code>](#number-sub) | `sub :: Number -> Number -> Number` |
+| [<code>mult</code>](#number-mult) | `mult :: Number -> Number -> Number` |
+| [<code>div</code>](#number-div) | `div :: Number -> Number -> Number` |
+| [<code>pow</code>](#number-pow) | `pow :: Number -> Number -> Number` |
+| [<code>sum</code>](#number-sum) | `sum :: Array Number -> Number` |
+| [<code>product</code>](#number-product) | `product :: Array Number -> Number` |
+| [<code>even</code>](#number-even) | `even :: Integer -> Boolean` |
+| [<code>odd</code>](#number-odd) | `odd :: Integer -> Boolean` |
+| [<code>parseFloat_</code>](#number-parsefloat_) | `parseFloat_ :: String -> Maybe Number` |
+| [<code>parseInt_</code>](#number-parseint_) | `parseInt_ :: Integer -> String -> Maybe Integer` |
 
-### `isNum` {#number-isnum}
+<a id="number-isnum"></a>
+
+### `isNum`
 
 ```
 isNum :: a -> Boolean
@@ -2302,7 +2600,9 @@ isNum (42) // => true;  isNum (NaN) // => false
 
 ---
 
-### `equals` {#number-equals}
+<a id="number-equals"></a>
+
+### `equals`
 
 ```
 equals :: Number -> Number -> Boolean
@@ -2316,7 +2616,9 @@ equals (NaN) (NaN) // => true
 
 ---
 
-### `lte` {#number-lte}
+<a id="number-lte"></a>
+
+### `lte`
 
 ```
 lte :: Number -> Number -> Boolean
@@ -2330,7 +2632,9 @@ lte (1) (2) // => true
 
 ---
 
-### `lt` {#number-lt}
+<a id="number-lt"></a>
+
+### `lt`
 
 ```
 lt :: Number -> Number -> Boolean
@@ -2344,7 +2648,9 @@ lt (1) (2) // => true
 
 ---
 
-### `gte` {#number-gte}
+<a id="number-gte"></a>
+
+### `gte`
 
 ```
 gte :: Number -> Number -> Boolean
@@ -2358,7 +2664,9 @@ gte (2) (1) // => true
 
 ---
 
-### `gt` {#number-gt}
+<a id="number-gt"></a>
+
+### `gt`
 
 ```
 gt :: Number -> Number -> Boolean
@@ -2372,7 +2680,9 @@ gt (2) (1) // => true
 
 ---
 
-### `min` {#number-min}
+<a id="number-min"></a>
+
+### `min`
 
 ```
 min :: Number -> Number -> Number
@@ -2386,7 +2696,9 @@ min (1) (2) // => 1
 
 ---
 
-### `max` {#number-max}
+<a id="number-max"></a>
+
+### `max`
 
 ```
 max :: Number -> Number -> Number
@@ -2400,7 +2712,9 @@ max (1) (2) // => 2
 
 ---
 
-### `clamp` {#number-clamp}
+<a id="number-clamp"></a>
+
+### `clamp`
 
 ```
 clamp :: Number -> Number -> Number -> Number
@@ -2414,7 +2728,9 @@ clamp (0) (10) (15) // => 10
 
 ---
 
-### `negate` {#number-negate}
+<a id="number-negate"></a>
+
+### `negate`
 
 ```
 negate :: Number -> Number
@@ -2428,7 +2744,9 @@ negate (3) // => -3
 
 ---
 
-### `add` {#number-add}
+<a id="number-add"></a>
+
+### `add`
 
 ```
 add :: Number -> Number -> Number
@@ -2442,7 +2760,9 @@ add (1) (2) // => 3
 
 ---
 
-### `sub` {#number-sub}
+<a id="number-sub"></a>
+
+### `sub`
 
 ```
 sub :: Number -> Number -> Number
@@ -2456,7 +2776,9 @@ sub (1) (3) // => 2
 
 ---
 
-### `mult` {#number-mult}
+<a id="number-mult"></a>
+
+### `mult`
 
 ```
 mult :: Number -> Number -> Number
@@ -2470,7 +2792,9 @@ mult (2) (3) // => 6
 
 ---
 
-### `div` {#number-div}
+<a id="number-div"></a>
+
+### `div`
 
 ```
 div :: Number -> Number -> Number
@@ -2484,7 +2808,9 @@ div (2) (10) // => 5
 
 ---
 
-### `pow` {#number-pow}
+<a id="number-pow"></a>
+
+### `pow`
 
 ```
 pow :: Number -> Number -> Number
@@ -2498,7 +2824,9 @@ pow (2) (3) // => 9
 
 ---
 
-### `sum` {#number-sum}
+<a id="number-sum"></a>
+
+### `sum`
 
 ```
 sum :: Array Number -> Number
@@ -2512,7 +2840,9 @@ sum ([1, 2, 3]) // => 6
 
 ---
 
-### `product` {#number-product}
+<a id="number-product"></a>
+
+### `product`
 
 ```
 product :: Array Number -> Number
@@ -2526,7 +2856,9 @@ product ([2, 3, 4]) // => 24
 
 ---
 
-### `even` {#number-even}
+<a id="number-even"></a>
+
+### `even`
 
 ```
 even :: Integer -> Boolean
@@ -2540,7 +2872,9 @@ even (4) // => true
 
 ---
 
-### `odd` {#number-odd}
+<a id="number-odd"></a>
+
+### `odd`
 
 ```
 odd :: Integer -> Boolean
@@ -2554,7 +2888,9 @@ odd (3) // => true
 
 ---
 
-### `parseFloat_` {#number-parsefloat_}
+<a id="number-parsefloat_"></a>
+
+### `parseFloat_`
 
 ```
 parseFloat_ :: String -> Maybe Number
@@ -2568,7 +2904,9 @@ parseFloat_ ('3.14') // => just(3.14)
 
 ---
 
-### `parseInt_` {#number-parseint_}
+<a id="number-parseint_"></a>
+
+### `parseInt_`
 
 ```
 parseInt_ :: Integer -> String -> Maybe Integer
@@ -2586,21 +2924,23 @@ parseInt_ (16) ('ff') // => just(255)
 
 | Function | Signature |
 |---|---|
-| [`pair`](#pair-pair) | `pair :: a -> b -> [a, b]` |
-| [`dup`](#pair-dup) | `dup :: a -> [a, a]` |
-| [`merge`](#pair-merge) | `merge :: [(a -> b), a] -> b` |
-| [`mergeSecond`](#pair-mergesecond) | `mergeSecond :: [a, (a -> b)] -> b` |
-| [`fst`](#pair-fst) | `fst :: [a, b] -> a` |
-| [`snd`](#pair-snd) | `snd :: [a, b] -> b` |
-| [`swap`](#pair-swap) | `swap :: [a, b] -> [b, a]` |
-| [`map`](#pair-map) | `map :: (a -> c) -> [a, b] -> [c, b]` |
-| [`mapSecond`](#pair-mapsecond) | `mapSecond :: (b -> d) -> [a, b] -> [a, d]` |
-| [`bimap`](#pair-bimap) | `bimap :: (a -> c) -> (b -> d) -> [a, b] -> [c, d]` |
-| [`fold`](#pair-fold) | `fold :: ((c, a, b) -> c) -> c -> [a, b] -> c` |
-| [`foldWith`](#pair-foldwith) | `foldWith :: (a -> b -> c) -> [a, b] -> c` |
-| [`traverse`](#pair-traverse) | `traverse :: (b -> f b) -> (f (a->b) -> f a -> f b) -> ((a->b) -> f a -> f b) -> (a -> f b) -> [a, c] -> f [b, c]` |
+| [<code>pair</code>](#pair-pair) | `pair :: a -> b -> [a, b]` |
+| [<code>dup</code>](#pair-dup) | `dup :: a -> [a, a]` |
+| [<code>merge</code>](#pair-merge) | `merge :: [(a -> b), a] -> b` |
+| [<code>mergeSecond</code>](#pair-mergesecond) | `mergeSecond :: [a, (a -> b)] -> b` |
+| [<code>fst</code>](#pair-fst) | `fst :: [a, b] -> a` |
+| [<code>snd</code>](#pair-snd) | `snd :: [a, b] -> b` |
+| [<code>swap</code>](#pair-swap) | `swap :: [a, b] -> [b, a]` |
+| [<code>map</code>](#pair-map) | `map :: (a -> c) -> [a, b] -> [c, b]` |
+| [<code>mapSecond</code>](#pair-mapsecond) | `mapSecond :: (b -> d) -> [a, b] -> [a, d]` |
+| [<code>bimap</code>](#pair-bimap) | `bimap :: (a -> c) -> (b -> d) -> [a, b] -> [c, d]` |
+| [<code>fold</code>](#pair-fold) | `fold :: ((c, a, b) -> c) -> c -> [a, b] -> c` |
+| [<code>foldWith</code>](#pair-foldwith) | `foldWith :: (a -> b -> c) -> [a, b] -> c` |
+| [<code>traverse</code>](#pair-traverse) | `traverse :: (b -> f b) -> (f (a->b) -> f a -> f b) -> ((a->b) -> f a -> f b) -> (a -> f b) -> [a, c] -> f [b, c]` |
 
-### `pair` {#pair-pair}
+<a id="pair-pair"></a>
+
+### `pair`
 
 ```
 pair :: a -> b -> [a, b]
@@ -2614,7 +2954,9 @@ pair (1) (2) // => [1, 2]
 
 ---
 
-### `dup` {#pair-dup}
+<a id="pair-dup"></a>
+
+### `dup`
 
 ```
 dup :: a -> [a, a]
@@ -2628,7 +2970,9 @@ dup (3) // => [3, 3]
 
 ---
 
-### `merge` {#pair-merge}
+<a id="pair-merge"></a>
+
+### `merge`
 
 ```
 merge :: [(a -> b), a] -> b
@@ -2642,7 +2986,9 @@ merge ([x => x + 1, 5]) // => 6
 
 ---
 
-### `mergeSecond` {#pair-mergesecond}
+<a id="pair-mergesecond"></a>
+
+### `mergeSecond`
 
 ```
 mergeSecond :: [a, (a -> b)] -> b
@@ -2656,7 +3002,9 @@ mergeSecond ([5, x => x + 1]) // => 6
 
 ---
 
-### `fst` {#pair-fst}
+<a id="pair-fst"></a>
+
+### `fst`
 
 ```
 fst :: [a, b] -> a
@@ -2670,7 +3018,9 @@ fst ([1, 2]) // => 1
 
 ---
 
-### `snd` {#pair-snd}
+<a id="pair-snd"></a>
+
+### `snd`
 
 ```
 snd :: [a, b] -> b
@@ -2684,7 +3034,9 @@ snd ([1, 2]) // => 2
 
 ---
 
-### `swap` {#pair-swap}
+<a id="pair-swap"></a>
+
+### `swap`
 
 ```
 swap :: [a, b] -> [b, a]
@@ -2698,7 +3050,9 @@ swap ([1, 2]) // => [2, 1]
 
 ---
 
-### `map` {#pair-map}
+<a id="pair-map"></a>
+
+### `map`
 
 ```
 map :: (a -> c) -> [a, b] -> [c, b]
@@ -2712,7 +3066,9 @@ map (x => x + 1) ([1, 2]) // => [2, 2]
 
 ---
 
-### `mapSecond` {#pair-mapsecond}
+<a id="pair-mapsecond"></a>
+
+### `mapSecond`
 
 ```
 mapSecond :: (b -> d) -> [a, b] -> [a, d]
@@ -2726,7 +3082,9 @@ mapSecond (x => x + 1) ([1, 2]) // => [1, 3]
 
 ---
 
-### `bimap` {#pair-bimap}
+<a id="pair-bimap"></a>
+
+### `bimap`
 
 ```
 bimap :: (a -> c) -> (b -> d) -> [a, b] -> [c, d]
@@ -2740,7 +3098,9 @@ bimap (x => x + 1) (x => x * 2) ([1, 3]) // => [2, 6]
 
 ---
 
-### `fold` {#pair-fold}
+<a id="pair-fold"></a>
+
+### `fold`
 
 ```
 fold :: ((c, a, b) -> c) -> c -> [a, b] -> c
@@ -2754,7 +3114,9 @@ fold ((acc, a, b) => acc + a + b) (0) ([1, 2]) // => 3
 
 ---
 
-### `foldWith` {#pair-foldwith}
+<a id="pair-foldwith"></a>
+
+### `foldWith`
 
 ```
 foldWith :: (a -> b -> c) -> [a, b] -> c
@@ -2768,7 +3130,9 @@ foldWith (a => b => a + b) ([1, 2]) // => 3
 
 ---
 
-### `traverse` {#pair-traverse}
+<a id="pair-traverse"></a>
+
+### `traverse`
 
 ```
 traverse :: (b -> f b) -> (f (a->b) -> f a -> f b) -> ((a->b) -> f a -> f b) -> (a -> f b) -> [a, c] -> f [b, c]
@@ -2786,15 +3150,17 @@ traverse (Array.of) (_ => _) (f => xs => xs.map (f)) (x => [x, -x]) ([1, 2]) // 
 
 | Function | Signature |
 |---|---|
-| [`equals`](#regexp-equals) | `equals :: RegExp -> RegExp -> Boolean` |
-| [`regex`](#regexp-regex) | `regex :: String -> String -> RegExp` |
-| [`regexEscape`](#regexp-regexescape) | `regexEscape :: String -> String` |
-| [`test`](#regexp-test) | `test :: RegExp -> String -> Boolean` |
-| [`match`](#regexp-match) | `match :: RegExp -> String -> Maybe (Array (Maybe String))` |
-| [`matchAll`](#regexp-matchall) | `matchAll :: RegExp -> String -> Array (Array (Maybe String))` |
-| [`replace`](#regexp-replace) | `replace :: (Array (Maybe String) -> String) -> RegExp -> String -> String` |
+| [<code>equals</code>](#regexp-equals) | `equals :: RegExp -> RegExp -> Boolean` |
+| [<code>regex</code>](#regexp-regex) | `regex :: String -> String -> RegExp` |
+| [<code>regexEscape</code>](#regexp-regexescape) | `regexEscape :: String -> String` |
+| [<code>test</code>](#regexp-test) | `test :: RegExp -> String -> Boolean` |
+| [<code>match</code>](#regexp-match) | `match :: RegExp -> String -> Maybe (Array (Maybe String))` |
+| [<code>matchAll</code>](#regexp-matchall) | `matchAll :: RegExp -> String -> Array (Array (Maybe String))` |
+| [<code>replace</code>](#regexp-replace) | `replace :: (Array (Maybe String) -> String) -> RegExp -> String -> String` |
 
-### `equals` {#regexp-equals}
+<a id="regexp-equals"></a>
+
+### `equals`
 
 ```
 equals :: RegExp -> RegExp -> Boolean
@@ -2808,7 +3174,9 @@ equals (/a/g) (/a/g) // => true
 
 ---
 
-### `regex` {#regexp-regex}
+<a id="regexp-regex"></a>
+
+### `regex`
 
 ```
 regex :: String -> String -> RegExp
@@ -2822,7 +3190,9 @@ regex ('g') ('[0-9]+') // => /[0-9]+/g
 
 ---
 
-### `regexEscape` {#regexp-regexescape}
+<a id="regexp-regexescape"></a>
+
+### `regexEscape`
 
 ```
 regexEscape :: String -> String
@@ -2836,7 +3206,9 @@ regexEscape ('a.b') // => 'a\.b'
 
 ---
 
-### `test` {#regexp-test}
+<a id="regexp-test"></a>
+
+### `test`
 
 ```
 test :: RegExp -> String -> Boolean
@@ -2850,7 +3222,9 @@ test (/^a/) ('abacus') // => true
 
 ---
 
-### `match` {#regexp-match}
+<a id="regexp-match"></a>
+
+### `match`
 
 ```
 match :: RegExp -> String -> Maybe (Array (Maybe String))
@@ -2864,7 +3238,9 @@ match (/(\w+)/) ('hello') // => just([just('hello')])
 
 ---
 
-### `matchAll` {#regexp-matchall}
+<a id="regexp-matchall"></a>
+
+### `matchAll`
 
 ```
 matchAll :: RegExp -> String -> Array (Array (Maybe String))
@@ -2878,7 +3254,9 @@ matchAll (/(\w+)/g) ('hi there') // => [[just('hi')], [just('there')]]
 
 ---
 
-### `replace` {#regexp-replace}
+<a id="regexp-replace"></a>
+
+### `replace`
 
 ```
 replace :: (Array (Maybe String) -> String) -> RegExp -> String -> String
@@ -2896,30 +3274,32 @@ replace (() => 'X') (/a/) ('cat') // => 'cXt'
 
 | Function | Signature |
 |---|---|
-| [`equals`](#string-equals) | `equals :: String -> String -> Boolean` |
-| [`lte`](#string-lte) | `lte :: String -> String -> Boolean` |
-| [`lt`](#string-lt) | `lt :: String -> String -> Boolean` |
-| [`gte`](#string-gte) | `gte :: String -> String -> Boolean` |
-| [`gt`](#string-gt) | `gt :: String -> String -> Boolean` |
-| [`min`](#string-min) | `min :: String -> String -> String` |
-| [`max`](#string-max) | `max :: String -> String -> String` |
-| [`clamp`](#string-clamp) | `clamp :: String -> String -> String -> String` |
-| [`concat`](#string-concat) | `concat :: String -> String -> String` |
-| [`empty`](#string-empty) | `` |
-| [`toUpper`](#string-toupper) | `toUpper :: String -> String` |
-| [`toLower`](#string-tolower) | `toLower :: String -> String` |
-| [`trim`](#string-trim) | `trim :: String -> String` |
-| [`stripPrefix`](#string-stripprefix) | `stripPrefix :: String -> String -> Maybe String` |
-| [`stripSuffix`](#string-stripsuffix) | `stripSuffix :: String -> String -> Maybe String` |
-| [`words`](#string-words) | `words :: String -> Array String` |
-| [`unwords`](#string-unwords) | `unwords :: Array String -> String` |
-| [`lines`](#string-lines) | `lines :: String -> Array String` |
-| [`unlines`](#string-unlines) | `unlines :: Array String -> String` |
-| [`splitOn`](#string-spliton) | `splitOn :: String -> String -> Array String` |
-| [`splitOnRegex`](#string-splitonregex) | `splitOnRegex :: RegExp -> String -> Array String` |
-| [`joinWith`](#string-joinwith) | `joinWith :: String -> Array String -> String` |
+| [<code>equals</code>](#string-equals) | `equals :: String -> String -> Boolean` |
+| [<code>lte</code>](#string-lte) | `lte :: String -> String -> Boolean` |
+| [<code>lt</code>](#string-lt) | `lt :: String -> String -> Boolean` |
+| [<code>gte</code>](#string-gte) | `gte :: String -> String -> Boolean` |
+| [<code>gt</code>](#string-gt) | `gt :: String -> String -> Boolean` |
+| [<code>min</code>](#string-min) | `min :: String -> String -> String` |
+| [<code>max</code>](#string-max) | `max :: String -> String -> String` |
+| [<code>clamp</code>](#string-clamp) | `clamp :: String -> String -> String -> String` |
+| [<code>concat</code>](#string-concat) | `concat :: String -> String -> String` |
+| [<code>empty</code>](#string-empty) | `` |
+| [<code>toUpper</code>](#string-toupper) | `toUpper :: String -> String` |
+| [<code>toLower</code>](#string-tolower) | `toLower :: String -> String` |
+| [<code>trim</code>](#string-trim) | `trim :: String -> String` |
+| [<code>stripPrefix</code>](#string-stripprefix) | `stripPrefix :: String -> String -> Maybe String` |
+| [<code>stripSuffix</code>](#string-stripsuffix) | `stripSuffix :: String -> String -> Maybe String` |
+| [<code>words</code>](#string-words) | `words :: String -> Array String` |
+| [<code>unwords</code>](#string-unwords) | `unwords :: Array String -> String` |
+| [<code>lines</code>](#string-lines) | `lines :: String -> Array String` |
+| [<code>unlines</code>](#string-unlines) | `unlines :: Array String -> String` |
+| [<code>splitOn</code>](#string-spliton) | `splitOn :: String -> String -> Array String` |
+| [<code>splitOnRegex</code>](#string-splitonregex) | `splitOnRegex :: RegExp -> String -> Array String` |
+| [<code>joinWith</code>](#string-joinwith) | `joinWith :: String -> Array String -> String` |
 
-### `equals` {#string-equals}
+<a id="string-equals"></a>
+
+### `equals`
 
 ```
 equals :: String -> String -> Boolean
@@ -2933,7 +3313,9 @@ equals ('a') ('a') // => true
 
 ---
 
-### `lte` {#string-lte}
+<a id="string-lte"></a>
+
+### `lte`
 
 ```
 lte :: String -> String -> Boolean
@@ -2947,7 +3329,9 @@ lte ('a') ('b') // => true
 
 ---
 
-### `lt` {#string-lt}
+<a id="string-lt"></a>
+
+### `lt`
 
 ```
 lt :: String -> String -> Boolean
@@ -2961,7 +3345,9 @@ lt ('a') ('b') // => true
 
 ---
 
-### `gte` {#string-gte}
+<a id="string-gte"></a>
+
+### `gte`
 
 ```
 gte :: String -> String -> Boolean
@@ -2975,7 +3361,9 @@ gte ('b') ('a') // => true
 
 ---
 
-### `gt` {#string-gt}
+<a id="string-gt"></a>
+
+### `gt`
 
 ```
 gt :: String -> String -> Boolean
@@ -2989,7 +3377,9 @@ gt ('b') ('a') // => true
 
 ---
 
-### `min` {#string-min}
+<a id="string-min"></a>
+
+### `min`
 
 ```
 min :: String -> String -> String
@@ -3003,7 +3393,9 @@ min ('a') ('b') // => 'a'
 
 ---
 
-### `max` {#string-max}
+<a id="string-max"></a>
+
+### `max`
 
 ```
 max :: String -> String -> String
@@ -3017,7 +3409,9 @@ max ('a') ('b') // => 'b'
 
 ---
 
-### `clamp` {#string-clamp}
+<a id="string-clamp"></a>
+
+### `clamp`
 
 ```
 clamp :: String -> String -> String -> String
@@ -3031,7 +3425,9 @@ clamp ('b') ('d') ('e') // => 'd'
 
 ---
 
-### `concat` {#string-concat}
+<a id="string-concat"></a>
+
+### `concat`
 
 ```
 concat :: String -> String -> String
@@ -3045,13 +3441,17 @@ concat ('foo') ('bar') // => 'foobar'
 
 ---
 
-### `empty` {#string-empty}
+<a id="string-empty"></a>
+
+### `empty`
 
 empty :: String — the empty string.
 
 ---
 
-### `toUpper` {#string-toupper}
+<a id="string-toupper"></a>
+
+### `toUpper`
 
 ```
 toUpper :: String -> String
@@ -3065,7 +3465,9 @@ toUpper ('hello') // => 'HELLO'
 
 ---
 
-### `toLower` {#string-tolower}
+<a id="string-tolower"></a>
+
+### `toLower`
 
 ```
 toLower :: String -> String
@@ -3079,7 +3481,9 @@ toLower ('HELLO') // => 'hello'
 
 ---
 
-### `trim` {#string-trim}
+<a id="string-trim"></a>
+
+### `trim`
 
 ```
 trim :: String -> String
@@ -3093,7 +3497,9 @@ trim ('  hi  ') // => 'hi'
 
 ---
 
-### `stripPrefix` {#string-stripprefix}
+<a id="string-stripprefix"></a>
+
+### `stripPrefix`
 
 ```
 stripPrefix :: String -> String -> Maybe String
@@ -3107,7 +3513,9 @@ stripPrefix ('foo') ('foobar') // => just('bar')
 
 ---
 
-### `stripSuffix` {#string-stripsuffix}
+<a id="string-stripsuffix"></a>
+
+### `stripSuffix`
 
 ```
 stripSuffix :: String -> String -> Maybe String
@@ -3121,7 +3529,9 @@ stripSuffix ('bar') ('foobar') // => just('foo')
 
 ---
 
-### `words` {#string-words}
+<a id="string-words"></a>
+
+### `words`
 
 ```
 words :: String -> Array String
@@ -3135,7 +3545,9 @@ words ('  foo bar  ') // => ['foo', 'bar']
 
 ---
 
-### `unwords` {#string-unwords}
+<a id="string-unwords"></a>
+
+### `unwords`
 
 ```
 unwords :: Array String -> String
@@ -3149,7 +3561,9 @@ unwords (['foo', 'bar']) // => 'foo bar'
 
 ---
 
-### `lines` {#string-lines}
+<a id="string-lines"></a>
+
+### `lines`
 
 ```
 lines :: String -> Array String
@@ -3163,7 +3577,9 @@ lines ('a\nb') // => ['a', 'b']
 
 ---
 
-### `unlines` {#string-unlines}
+<a id="string-unlines"></a>
+
+### `unlines`
 
 ```
 unlines :: Array String -> String
@@ -3177,7 +3593,9 @@ unlines (['a', 'b']) // => 'a\nb\n'
 
 ---
 
-### `splitOn` {#string-spliton}
+<a id="string-spliton"></a>
+
+### `splitOn`
 
 ```
 splitOn :: String -> String -> Array String
@@ -3191,7 +3609,9 @@ splitOn (',') ('a,b,c') // => ['a', 'b', 'c']
 
 ---
 
-### `splitOnRegex` {#string-splitonregex}
+<a id="string-splitonregex"></a>
+
+### `splitOnRegex`
 
 ```
 splitOnRegex :: RegExp -> String -> Array String
@@ -3205,7 +3625,9 @@ splitOnRegex (/,/g) ('a,b,c') // => ['a', 'b', 'c']
 
 ---
 
-### `joinWith` {#string-joinwith}
+<a id="string-joinwith"></a>
+
+### `joinWith`
 
 ```
 joinWith :: String -> Array String -> String
@@ -3223,34 +3645,36 @@ joinWith ('-') (['a', 'b', 'c']) // => 'a-b-c'
 
 | Function | Signature |
 |---|---|
-| [`equals`](#strmap-equals) | `equals :: ((v, v) -> Boolean) -> StrMap v -> StrMap v -> Boolean` |
-| [`lte`](#strmap-lte) | `lte :: ((v, v) -> Boolean) -> StrMap v -> StrMap v -> Boolean` |
-| [`concat`](#strmap-concat) | `concat :: StrMap v -> StrMap v -> StrMap v` |
-| [`empty`](#strmap-empty) | `empty :: () -> StrMap v` |
-| [`filter`](#strmap-filter) | `filter :: (v -> Boolean) -> StrMap v -> StrMap v` |
-| [`reject`](#strmap-reject) | `reject :: (v -> Boolean) -> StrMap v -> StrMap v` |
-| [`map`](#strmap-map) | `map :: (a -> b) -> StrMap a -> StrMap b` |
-| [`ap`](#strmap-ap) | `ap :: StrMap (a -> b) -> StrMap a -> StrMap b` |
-| [`alt`](#strmap-alt) | `alt :: StrMap v -> StrMap v -> StrMap v` |
-| [`zero`](#strmap-zero) | `zero :: () -> StrMap v` |
-| [`reduce`](#strmap-reduce) | `reduce :: ((b, v) -> b) -> b -> StrMap v -> b` |
-| [`size`](#strmap-size) | `size :: StrMap v -> Integer` |
-| [`all`](#strmap-all) | `all :: (v -> Boolean) -> StrMap v -> Boolean` |
-| [`any`](#strmap-any) | `any :: (v -> Boolean) -> StrMap v -> Boolean` |
-| [`none`](#strmap-none) | `none :: (v -> Boolean) -> StrMap v -> Boolean` |
-| [`elem`](#strmap-elem) | `elem :: ((v, v) -> Boolean) -> v -> StrMap v -> Boolean` |
-| [`traverse`](#strmap-traverse) | `traverse :: (b -> f b) -> (f (a->b) -> f a -> f b) -> ((a->b) -> f a -> f b) -> (v -> f b) -> StrMap v -> f (StrMap b)` |
-| [`value`](#strmap-value) | `value :: String -> StrMap a -> Maybe a` |
-| [`singleton`](#strmap-singleton) | `singleton :: String -> a -> StrMap a` |
-| [`insert`](#strmap-insert) | `insert :: String -> a -> StrMap a -> StrMap a` |
-| [`remove`](#strmap-remove) | `remove :: String -> StrMap a -> StrMap a` |
-| [`keys`](#strmap-keys) | `keys :: StrMap a -> Array String` |
-| [`values`](#strmap-values) | `values :: StrMap a -> Array a` |
-| [`pairs`](#strmap-pairs) | `pairs :: StrMap a -> Array [String, a]` |
-| [`fromPairs`](#strmap-frompairs) | `fromPairs :: Array [String, a] -> StrMap a` |
-| [`reduceC`](#strmap-reducec) | `reduceC :: (b -> a -> b) -> b -> StrMap a -> b` |
+| [<code>equals</code>](#strmap-equals) | `equals :: ((v, v) -> Boolean) -> StrMap v -> StrMap v -> Boolean` |
+| [<code>lte</code>](#strmap-lte) | `lte :: ((v, v) -> Boolean) -> StrMap v -> StrMap v -> Boolean` |
+| [<code>concat</code>](#strmap-concat) | `concat :: StrMap v -> StrMap v -> StrMap v` |
+| [<code>empty</code>](#strmap-empty) | `empty :: () -> StrMap v` |
+| [<code>filter</code>](#strmap-filter) | `filter :: (v -> Boolean) -> StrMap v -> StrMap v` |
+| [<code>reject</code>](#strmap-reject) | `reject :: (v -> Boolean) -> StrMap v -> StrMap v` |
+| [<code>map</code>](#strmap-map) | `map :: (a -> b) -> StrMap a -> StrMap b` |
+| [<code>ap</code>](#strmap-ap) | `ap :: StrMap (a -> b) -> StrMap a -> StrMap b` |
+| [<code>alt</code>](#strmap-alt) | `alt :: StrMap v -> StrMap v -> StrMap v` |
+| [<code>zero</code>](#strmap-zero) | `zero :: () -> StrMap v` |
+| [<code>reduce</code>](#strmap-reduce) | `reduce :: ((b, v) -> b) -> b -> StrMap v -> b` |
+| [<code>size</code>](#strmap-size) | `size :: StrMap v -> Integer` |
+| [<code>all</code>](#strmap-all) | `all :: (v -> Boolean) -> StrMap v -> Boolean` |
+| [<code>any</code>](#strmap-any) | `any :: (v -> Boolean) -> StrMap v -> Boolean` |
+| [<code>none</code>](#strmap-none) | `none :: (v -> Boolean) -> StrMap v -> Boolean` |
+| [<code>elem</code>](#strmap-elem) | `elem :: ((v, v) -> Boolean) -> v -> StrMap v -> Boolean` |
+| [<code>traverse</code>](#strmap-traverse) | `traverse :: (b -> f b) -> (f (a->b) -> f a -> f b) -> ((a->b) -> f a -> f b) -> (v -> f b) -> StrMap v -> f (StrMap b)` |
+| [<code>value</code>](#strmap-value) | `value :: String -> StrMap a -> Maybe a` |
+| [<code>singleton</code>](#strmap-singleton) | `singleton :: String -> a -> StrMap a` |
+| [<code>insert</code>](#strmap-insert) | `insert :: String -> a -> StrMap a -> StrMap a` |
+| [<code>remove</code>](#strmap-remove) | `remove :: String -> StrMap a -> StrMap a` |
+| [<code>keys</code>](#strmap-keys) | `keys :: StrMap a -> Array String` |
+| [<code>values</code>](#strmap-values) | `values :: StrMap a -> Array a` |
+| [<code>pairs</code>](#strmap-pairs) | `pairs :: StrMap a -> Array [String, a]` |
+| [<code>fromPairs</code>](#strmap-frompairs) | `fromPairs :: Array [String, a] -> StrMap a` |
+| [<code>reduceC</code>](#strmap-reducec) | `reduceC :: (b -> a -> b) -> b -> StrMap a -> b` |
 
-### `equals` {#strmap-equals}
+<a id="strmap-equals"></a>
+
+### `equals`
 
 ```
 equals :: ((v, v) -> Boolean) -> StrMap v -> StrMap v -> Boolean
@@ -3264,7 +3688,9 @@ equals ((a, b) => a === b) ({ a: 1 }) ({ a: 1 }) // => true
 
 ---
 
-### `lte` {#strmap-lte}
+<a id="strmap-lte"></a>
+
+### `lte`
 
 ```
 lte :: ((v, v) -> Boolean) -> StrMap v -> StrMap v -> Boolean
@@ -3278,7 +3704,9 @@ lte ((a, b) => a <= b) ({ a: 1 }) ({ a: 2 }) // => true
 
 ---
 
-### `concat` {#strmap-concat}
+<a id="strmap-concat"></a>
+
+### `concat`
 
 ```
 concat :: StrMap v -> StrMap v -> StrMap v
@@ -3292,7 +3720,9 @@ concat ({ a: 1 }) ({ b: 2 }) // => {a:1,b:2}
 
 ---
 
-### `empty` {#strmap-empty}
+<a id="strmap-empty"></a>
+
+### `empty`
 
 ```
 empty :: () -> StrMap v
@@ -3306,7 +3736,9 @@ empty () // => {}
 
 ---
 
-### `filter` {#strmap-filter}
+<a id="strmap-filter"></a>
+
+### `filter`
 
 ```
 filter :: (v -> Boolean) -> StrMap v -> StrMap v
@@ -3320,7 +3752,9 @@ filter (v => v > 1) ({ a: 1, b: 2, c: 3 }) // => {b:2,c:3}
 
 ---
 
-### `reject` {#strmap-reject}
+<a id="strmap-reject"></a>
+
+### `reject`
 
 ```
 reject :: (v -> Boolean) -> StrMap v -> StrMap v
@@ -3334,7 +3768,9 @@ reject (v => v > 1) ({ a: 1, b: 2 }) // => {a:1}
 
 ---
 
-### `map` {#strmap-map}
+<a id="strmap-map"></a>
+
+### `map`
 
 ```
 map :: (a -> b) -> StrMap a -> StrMap b
@@ -3348,7 +3784,9 @@ map (v => v * 2) ({ a: 1, b: 2 }) // => {a:2,b:4}
 
 ---
 
-### `ap` {#strmap-ap}
+<a id="strmap-ap"></a>
+
+### `ap`
 
 ```
 ap :: StrMap (a -> b) -> StrMap a -> StrMap b
@@ -3362,7 +3800,9 @@ ap ({ a: x => x + 1 }) ({ a: 1, b: 2 }) // => {a:2}
 
 ---
 
-### `alt` {#strmap-alt}
+<a id="strmap-alt"></a>
+
+### `alt`
 
 ```
 alt :: StrMap v -> StrMap v -> StrMap v
@@ -3376,7 +3816,9 @@ alt ({ a: 1 }) ({ a: 9, b: 2 }) // => {a:1,b:2}
 
 ---
 
-### `zero` {#strmap-zero}
+<a id="strmap-zero"></a>
+
+### `zero`
 
 ```
 zero :: () -> StrMap v
@@ -3390,7 +3832,9 @@ zero () // => {}
 
 ---
 
-### `reduce` {#strmap-reduce}
+<a id="strmap-reduce"></a>
+
+### `reduce`
 
 ```
 reduce :: ((b, v) -> b) -> b -> StrMap v -> b
@@ -3404,7 +3848,9 @@ reduce ((acc, v) => acc + v) (0) ({ b: 2, a: 1 }) // => 3
 
 ---
 
-### `size` {#strmap-size}
+<a id="strmap-size"></a>
+
+### `size`
 
 ```
 size :: StrMap v -> Integer
@@ -3418,7 +3864,9 @@ size ({ a: 1, b: 2 }) // => 2
 
 ---
 
-### `all` {#strmap-all}
+<a id="strmap-all"></a>
+
+### `all`
 
 ```
 all :: (v -> Boolean) -> StrMap v -> Boolean
@@ -3432,7 +3880,9 @@ all (v => v > 0) ({ a: 1, b: 2 }) // => true
 
 ---
 
-### `any` {#strmap-any}
+<a id="strmap-any"></a>
+
+### `any`
 
 ```
 any :: (v -> Boolean) -> StrMap v -> Boolean
@@ -3446,7 +3896,9 @@ any (v => v > 1) ({ a: 1, b: 2 }) // => true
 
 ---
 
-### `none` {#strmap-none}
+<a id="strmap-none"></a>
+
+### `none`
 
 ```
 none :: (v -> Boolean) -> StrMap v -> Boolean
@@ -3460,7 +3912,9 @@ none (v => v > 5) ({ a: 1, b: 2 }) // => true
 
 ---
 
-### `elem` {#strmap-elem}
+<a id="strmap-elem"></a>
+
+### `elem`
 
 ```
 elem :: ((v, v) -> Boolean) -> v -> StrMap v -> Boolean
@@ -3474,7 +3928,9 @@ elem ((a, b) => a === b) (2) ({ a: 1, b: 2 }) // => true
 
 ---
 
-### `traverse` {#strmap-traverse}
+<a id="strmap-traverse"></a>
+
+### `traverse`
 
 ```
 traverse :: (b -> f b) -> (f (a->b) -> f a -> f b) -> ((a->b) -> f a -> f b) -> (v -> f b) -> StrMap v -> f (StrMap b)
@@ -3488,7 +3944,9 @@ traverse (Array.of) (ff => fa => ff.flatMap (f => fa.map (f))) (f => fa => fa.ma
 
 ---
 
-### `value` {#strmap-value}
+<a id="strmap-value"></a>
+
+### `value`
 
 ```
 value :: String -> StrMap a -> Maybe a
@@ -3502,7 +3960,9 @@ value ('a') ({ a: 1 }) // => just(1)
 
 ---
 
-### `singleton` {#strmap-singleton}
+<a id="strmap-singleton"></a>
+
+### `singleton`
 
 ```
 singleton :: String -> a -> StrMap a
@@ -3516,7 +3976,9 @@ singleton ('a') (1) // => {a:1}
 
 ---
 
-### `insert` {#strmap-insert}
+<a id="strmap-insert"></a>
+
+### `insert`
 
 ```
 insert :: String -> a -> StrMap a -> StrMap a
@@ -3530,7 +3992,9 @@ insert ('b') (2) ({ a: 1 }) // => {a:1,b:2}
 
 ---
 
-### `remove` {#strmap-remove}
+<a id="strmap-remove"></a>
+
+### `remove`
 
 ```
 remove :: String -> StrMap a -> StrMap a
@@ -3544,7 +4008,9 @@ remove ('a') ({ a: 1, b: 2 }) // => {b:2}
 
 ---
 
-### `keys` {#strmap-keys}
+<a id="strmap-keys"></a>
+
+### `keys`
 
 ```
 keys :: StrMap a -> Array String
@@ -3558,7 +4024,9 @@ keys ({ b: 2, a: 1 }) // => ['b','a']
 
 ---
 
-### `values` {#strmap-values}
+<a id="strmap-values"></a>
+
+### `values`
 
 ```
 values :: StrMap a -> Array a
@@ -3572,7 +4040,9 @@ values ({ a: 1, b: 2 }) // => [1,2]
 
 ---
 
-### `pairs` {#strmap-pairs}
+<a id="strmap-pairs"></a>
+
+### `pairs`
 
 ```
 pairs :: StrMap a -> Array [String, a]
@@ -3586,7 +4056,9 @@ pairs ({ a: 1 }) // => [['a',1]]
 
 ---
 
-### `fromPairs` {#strmap-frompairs}
+<a id="strmap-frompairs"></a>
+
+### `fromPairs`
 
 ```
 fromPairs :: Array [String, a] -> StrMap a
@@ -3600,7 +4072,9 @@ fromPairs ([['a', 1], ['b', 2]]) // => {a:1,b:2}
 
 ---
 
-### `reduceC` {#strmap-reducec}
+<a id="strmap-reducec"></a>
+
+### `reduceC`
 
 ```
 reduceC :: (b -> a -> b) -> b -> StrMap a -> b
