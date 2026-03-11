@@ -1,6 +1,6 @@
 {
   "name": "@algosail/sail",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Small FP library for vanilla JS projects.",
   "author": "algosail",
   "license": "MIT",
@@ -32,7 +32,7 @@
     "lib/*.js"
   ],
   "scripts": {
-    "test": "node --test test/*.test.js",
+    "test": "brittle -r test/all.js test/*.test.js && node test/all.js",
     "docs": "node scripts/build-docs.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
