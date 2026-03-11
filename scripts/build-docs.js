@@ -2,7 +2,7 @@
 // scripts/build-docs.js – Parses JSDoc from lib/*.js and generates docs/index.html
 // Run: node scripts/build-docs.js
 
-import { readFileSync, writeFileSync, readdirSync } from 'fs'
+import { readFileSync, writeFileSync } from 'fs'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -15,38 +15,36 @@ const __dirname = dirname (fileURLToPath (import.meta.url))
 const ROOT      = join (__dirname, '..')
 const LIB_DIR   = join (ROOT, 'lib')
 const OUT_FILE  = join (ROOT, 'docs', 'index.html')
+const PKG       = JSON.parse (readFileSync (join (ROOT, 'package.json'), 'utf8'))
 
 // =============================================================================
-// Module metadata — display name, description, order
+// Module metadata — read from file header comments
 // =============================================================================
 
-const MODULE_META = {
-  fn:             { label: 'fn',           title: 'Function',     desc: 'Core combinators, composition, Reader monad, and error handling.' },
-  logic:          { label: 'logic',        title: 'Logic',        desc: 'Predicate combinators and control-flow utilities.' },
-  maybe:          { label: 'maybe',        title: 'Maybe',        desc: 'The Maybe monad — Just | Nothing. Represents optional values.' },
-  either:         { label: 'either',       title: 'Either',       desc: 'The Either monad — Left | Right. Represents values with two possibilities.' },
-  validation:     { label: 'validation',   title: 'Validation',   desc: 'Applicative error accumulation — Failure | Success.' },
-  these:          { label: 'these',        title: 'These',        desc: 'The These type — This | That | Both. Holds one or both values.' },
-  ordering:       { label: 'ordering',     title: 'Ordering',     desc: 'The Ordering type — LT | EQ | GT. Comparator algebra.' },
-  identity:       { label: 'identity',     title: 'Identity',     desc: 'The Identity functor / monad. The simplest possible wrapper.' },
-  state:          { label: 'state',        title: 'State',        desc: 'The State monad. Stateful computations as pure functions.' },
-  'state-either': { label: 'state-either', title: 'StateEither',  desc: 'The StateEither monad. Stateful computations with error handling.' },
-  lens:           { label: 'lens',         title: 'Lens',         desc: 'Functional lenses for immutable data access and update.' },
-  array:          { label: 'array',        title: 'Array',        desc: 'Array utilities: constructors, folds, and transformers.' },
-  nonempty:       { label: 'nonempty',     title: 'NonEmpty',     desc: 'NonEmptyArray — an array guaranteed to have at least one element.' },
-  pair:           { label: 'pair',         title: 'Pair',         desc: 'Ordered pair (2-tuple) utilities.' },
-  strmap:         { label: 'strmap',       title: 'StrMap',       desc: 'Plain JS objects used as string-keyed maps.' },
-  boolean:        { label: 'boolean',      title: 'Boolean',      desc: 'Boolean type guard and equality.' },
-  number:         { label: 'number',       title: 'Number',       desc: 'Number predicates, arithmetic, and safe parsing.' },
-  string:         { label: 'string',       title: 'String',       desc: 'String comparison, manipulation, and utility functions.' },
-  date:           { label: 'date',         title: 'Date',         desc: 'Immutable date constructors, comparison, and arithmetic.' },
-  regexp:         { label: 'regexp',       title: 'RegExp',       desc: 'RegExp constructors, comparison, and matching utilities.' },
-  nil:            { label: 'nil',          title: 'Nil',          desc: 'Utilities for null | undefined values.' },
-  map:            { label: 'map',          title: 'Map',          desc: 'Functional Map with arbitrary key types. Immutable, equality-function-based.' },
-  set:            { label: 'set',          title: 'Set',          desc: 'Functional Set with arbitrary equality. Immutable, equality-function-based.' },
+// Derive a display title from a module key: "state-either" → "StateEither"
+function keyToTitle (key) {
+  return key.split ('-').map ((p) => p.charAt (0).toUpperCase () + p.slice (1)).join ('')
 }
 
-const MODULE_ORDER = Object.keys (MODULE_META)
+// Read module name and description from the leading comment block of a file.
+// Line 0:    "// filename.js"  → module name (without extension)
+// Lines 1–N: "// ..."          → description (all consecutive comment lines)
+function readModuleMeta (filePath) {
+  const lines     = readFileSync (filePath, 'utf8').split ('\n')
+  const nameMatch = lines[0]?.match (/^\/\/\s*(.+?)\.js\s*$/)
+  const name      = nameMatch ? nameMatch[1] : ''
+  const title     = keyToTitle (name)
+
+  const descLines = []
+  for (let i = 1; i < lines.length; i++) {
+    const m = lines[i].match (/^\/\/\s*(.*)$/)
+    if (!m) break
+    descLines.push (m[1])
+  }
+  const desc = descLines.join ('<br/>').trim ()
+
+  return { title, desc }
+}
 
 // =============================================================================
 // JSDoc parser
@@ -134,16 +132,16 @@ function parseJsDocBlock (raw, name) {
 // =============================================================================
 
 function loadModules () {
-  const files   = readdirSync (LIB_DIR).filter ((f) => f.endsWith ('.js'))
-  const modules = []
+  const exportsMap = PKG.exports ?? {}
+  const modules    = []
 
-  for (const order of MODULE_ORDER) {
-    const file = `${order}.js`
-    if (!files.includes (file)) continue
-    const meta    = MODULE_META[order]
-    const entries = parseFile (join (LIB_DIR, file))
+  for (const [key, relPath] of Object.entries (exportsMap)) {
+    const label    = key.replace (/^\.\//, '')
+    const filePath = join (ROOT, relPath)
+    const { title, desc } = readModuleMeta (filePath)
+    const entries  = parseFile (filePath)
     if (entries.length === 0) continue
-    modules.push ({ ...meta, entries })
+    modules.push ({ label, title, desc, entries })
   }
 
   return modules
@@ -224,7 +222,7 @@ function renderModule (mod) {
     <section class="module" id="module-${mod.label}">
       <div class="module-header">
         <h2 class="module-title">${esc (mod.title)}</h2>
-        <p class="module-desc">${esc (mod.desc)}</p>
+        <p class="module-desc">${mod.desc}</p>
       </div>
       <div class="entries">${entriesHtml}
       </div>
@@ -246,7 +244,7 @@ function renderToc (modules) {
           <ul class="toc-fns">${fnLinks}</ul>
         </details>`
   }).join ('')
-  return `<ul class="toc-modules">${items}</ul>`
+  return `<ul id="toc" class="toc-modules">${items}</ul>`
 }
 
 // =============================================================================
@@ -287,7 +285,7 @@ function buildPage (modules) {
 
 <!-- ── Top bar ──────────────────────────────────────────────────────────── -->
 <header class="topbar">
-  <div class="topbar-logo">@algosail/<span>sail</span></div>
+  <a class="topbar-logo" href="#toc">@algosail/<span>sail</span></a>
 
   <div class="search-wrap">
     <span class="search-icon">⌕</span>
@@ -296,31 +294,31 @@ function buildPage (modules) {
     <div id="search-results"></div>
   </div>
 
-  <div class="topbar-version">v0.1.2</div>
+  <div class="topbar-version">v${PKG.version}</div>
 </header>
 
 
 <!-- ── Main ─────────────────────────────────────────────────────────────── -->
 <main class="main" id="main">
-
-  <div class="hero">
-    <div class="hero-content">
-      <p>A small functional programming library for vanilla JavaScript.
-        Curried functions, algebraic data types, and zero dependencies.</p>
-      <div class="hero-pills">
-        <span class="pill"><span class="pill-dot"></span>Fully curried</span>
-        <span class="pill"><span class="pill-dot"></span>Zero dependencies</span>
-        <span class="pill"><span class="pill-dot"></span>ESM only</span>
-        <span class="pill"><span class="pill-dot"></span>` + totalFns + ` functions</span>
-        <span class="pill"><span class="pill-dot"></span>` + modules.length + ` modules</span>
+  <div class="docs">
+    <div class="hero">
+      <div class="hero-content">
+        <p>A small functional programming library for vanilla JavaScript.
+          Curried functions, algebraic data types, and zero dependencies.</p>
+        <div class="hero-pills">
+          <span class="pill"><span class="pill-dot"></span>Fully curried</span>
+          <span class="pill"><span class="pill-dot"></span>Zero dependencies</span>
+          <span class="pill"><span class="pill-dot"></span>ESM only</span>
+          <span class="pill"><span class="pill-dot"></span>` + totalFns + ` functions</span>
+          <span class="pill"><span class="pill-dot"></span>` + modules.length + ` modules</span>
+        </div>
       </div>
     </div>
-    ${toc}
+
+    <div id="no-results">No functions match your search.</div>
+    ${sectionsHtml}
   </div>
-
-  <div id="no-results">No functions match your search.</div>
-
-  ${sectionsHtml}
+  ${toc}
 </main>
 
 <script>

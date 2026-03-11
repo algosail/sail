@@ -9,8 +9,8 @@ const noResults   = document.getElementById ('no-results')
 const sidebar     = document.getElementById ('sidebar')
 const allEntries  = Array.from (document.querySelectorAll ('.entry'))
 const allSections = Array.from (document.querySelectorAll ('.module'))
-const allTocFns   = Array.from (document.querySelectorAll ('.toc-fn'))
-const allTocMods  = Array.from (document.querySelectorAll ('.toc-module-link'))
+// const allTocFns   = Array.from (document.querySelectorAll ('.toc-fn'))
+// const allTocMods  = Array.from (document.querySelectorAll ('.toc-module-link'))
 
 // ── HTML escape ────────────────────────────────────────────────────────────────
 function escHtml (s) {
@@ -148,37 +148,37 @@ clearBtn.addEventListener ('click', function () {
 })
 
 // ── Active TOC highlighting via IntersectionObserver ──────────────────────────
-const tocFnMap  = {}
-const tocModMap = {}
+// const tocFnMap  = {}
+// const tocModMap = {}
 
-allTocFns.forEach (function (a)  { tocFnMap[a.getAttribute ('href').slice (1)]  = a })
-allTocMods.forEach (function (a) { tocModMap[a.getAttribute ('href').slice (1)] = a })
+// allTocFns.forEach (function (a)  { tocFnMap[a.getAttribute ('href').slice (1)]  = a })
+// // allTocMods.forEach (function (a) { tocModMap[a.getAttribute ('href').slice (1)] = a })
 
-const observer = new IntersectionObserver (function (entries) {
-  entries.forEach (function (entry) {
-    if (!entry.isIntersecting) return
-    const id  = entry.target.id
-    const mod = entry.target.dataset.module || entry.target.id.replace ('module-', '')
+// const observer = new IntersectionObserver (function (entries) {
+//   entries.forEach (function (entry) {
+//     if (!entry.isIntersecting) return
+//     const id  = entry.target.id
+//     const mod = entry.target.dataset.module || entry.target.id.replace ('module-', '')
 
-    allTocFns.forEach (function (a)  { a.classList.remove ('active') })
-    allTocMods.forEach (function (a) { a.classList.remove ('active') })
+//     allTocFns.forEach (function (a)  { a.classList.remove ('active') })
+//     // allTocMods.forEach (function (a) { a.classList.remove ('active') })
 
-    if (tocFnMap[id])                   tocFnMap[id].classList.add ('active')
-    if (tocModMap['module-' + mod])     tocModMap['module-' + mod].classList.add ('active')
+//     if (tocFnMap[id])                   tocFnMap[id].classList.add ('active')
+//     if (tocModMap['module-' + mod])     tocModMap['module-' + mod].classList.add ('active')
 
-    const activeFn = tocFnMap[id]
-    if (activeFn) {
-      const sb = sidebar.getBoundingClientRect ()
-      const el = activeFn.getBoundingClientRect ()
-      if (el.top < sb.top + 32 || el.bottom > sb.bottom - 32) {
-        activeFn.scrollIntoView ({ block: 'nearest', behavior: 'smooth' })
-      }
-    }
-  })
-}, { rootMargin: '-52px 0px -60% 0px', threshold: 0 })
+//     const activeFn = tocFnMap[id]
+//     if (activeFn) {
+//       const sb = sidebar.getBoundingClientRect ()
+//       const el = activeFn.getBoundingClientRect ()
+//       if (el.top < sb.top + 32 || el.bottom > sb.bottom - 32) {
+//         activeFn.scrollIntoView ({ block: 'nearest', behavior: 'smooth' })
+//       }
+//     }
+//   })
+// }, { rootMargin: '-52px 0px -60% 0px', threshold: 0 })
 
-allEntries.forEach (function (el)  { observer.observe (el) })
-allSections.forEach (function (el) { observer.observe (el) })
+// allEntries.forEach (function (el)  { observer.observe (el) })
+// allSections.forEach (function (el) { observer.observe (el) })
 
 // ── Keyboard shortcut: / to focus search ──────────────────────────────────────
 document.addEventListener ('keydown', function (e) {

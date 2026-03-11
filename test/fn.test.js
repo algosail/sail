@@ -184,27 +184,27 @@ test ('pipeWith threads a value through ADT steps using a bind combinator', (t) 
   const pos  = (x) => x > 0  ? just (x)     : nothing ()
   const lt10 = (x) => x < 10 ? just (x * 2) : nothing ()
 
-  const good = pipeWith (chain) (just (4))  ([pos, lt10])
+  const good = pipeWith (chain) ([pos, lt10]) (just (4))
   t.ok (isJust (good))
   t.is (good.value, 8)
 
-  const bad = pipeWith (chain) (just (-1)) ([pos, lt10])
+  const bad = pipeWith (chain) ([pos, lt10]) (just (-1))
   t.ok (isNothing (bad))
 })
 
 test ('pipeWith with empty steps returns the original value', (t) => {
   const bind = (f) => (x) => f (x)
-  t.is (pipeWith (bind) (42) ([]), 42)
+  t.is (pipeWith (bind) ([]) (42), 42)
 })
 
 test ('pipeWith works as a map-only pipeline', (t) => {
   // Use plain function application as bind
   const bind = (f) => (x) => f (x)
-  const result = pipeWith (bind) (3) ([
+  const result = pipeWith (bind) ([
     (x) => x + 1,
     (x) => x * 2,
     (x) => x - 1,
-  ])
+  ]) (3)
   t.is (result, 7)  // ((3 + 1) * 2) - 1
 })
 
